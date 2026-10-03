@@ -5,6 +5,7 @@
   /* ---------- Configuración del negocio: editar aquí ---------- */
   const CONFIG = {
     whatsapp: "56956100642",
+    booking: "https://ameblounge.site.agendapro.com/cl/sucursal/25770",
     instagram: "", // p. ej. "https://www.instagram.com/usuario/" — vacío = enlace genérico
     timezone: "America/Santiago",
     // Horario de EJEMPLO (0 = domingo). null = cerrado. Confirmar con el salón.
@@ -24,6 +25,7 @@
   const $$ = (s, el = document) => [...el.querySelectorAll(s)];
   const root = document.documentElement;
 
+  $$("[data-book]").forEach(a => (a.href = CONFIG.booking));
   if (CONFIG.instagram) $$("[data-ig]").forEach(a => (a.href = CONFIG.instagram));
   const year = $("#year"); if (year) year.textContent = new Date().getFullYear();
 
@@ -112,6 +114,20 @@
     }
   });
 
+  /* ---------- Filtro de servicios ---------- */
+  const chips = $$(".svc-filter .chip");
+  const cards = $$("#svcCards .svc-card");
+  chips.forEach(chip => chip.addEventListener("click", () => {
+    const f = chip.dataset.filter;
+    chips.forEach(c => c.setAttribute("aria-selected", String(c === chip)));
+    cards.forEach(card => {
+      const show = f === "all" || card.dataset.group === f;
+      card.hidden = !show;
+      card.classList.remove("is-shown");
+      if (show) { card.classList.add("is-in"); void card.offsetWidth; card.classList.add("is-shown"); }
+    });
+  }));
+
   /* ---------- Toast ---------- */
   const toastEl = $("#toast"); let toastT;
   function toast(msg) {
@@ -150,19 +166,14 @@
   const fecha = $("#f-fecha");
   if (fecha) fecha.min = new Date(Date.now() - new Date().getTimezoneOffset() * 6e4).toISOString().slice(0, 10);
 
-  // Los links "Reservar X" de las tarjetas preseleccionan el servicio
-  $$("[data-service]").forEach(a => a.addEventListener("click", () => {
-    const r = $(`input[name="servicio"][value="${a.dataset.service}"]`);
-    if (r) r.checked = true;
-  }));
-
   const setErr = (id, msg, field) => {
     $("#err-" + id).textContent = msg;
     if (field) field.setAttribute("aria-invalid", msg ? "true" : "false");
   };
   const nombre = $("#f-nombre");
   nombre.addEventListener("blur", () => nombre.value.trim() && setErr("nombre", "", nombre));
-  $$('input[name="servicio"]').forEach(r => r.addEventListener("change", () => setErr("servicio", "")));
+  const svcSel = $("#f-svc");
+  svcSel.addEventListener("change", () => svcSel.value && setErr("servicio", "", svcSel));
 
   form.addEventListener("submit", e => {
     e.preventDefault();
@@ -170,7 +181,7 @@
     const svc = data.get("servicio");
     const name = (data.get("nombre") || "").trim();
     let firstBad = null;
-    if (!svc) { setErr("servicio", "Elige un servicio para continuar."); firstBad = firstBad || $('input[name="servicio"]'); }
+    if (!svc) { setErr("servicio", "Elige un servicio para continuar.", svcSel); firstBad = svcSel; }
     if (!name) { setErr("nombre", "Escribe tu nombre para saber a quién responder.", nombre); firstBad = firstBad || nombre; }
     if (firstBad) { firstBad.focus(); return; }
 

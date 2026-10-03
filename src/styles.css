@@ -152,6 +152,7 @@ p{margin:0 0 var(--sp-4)}
 .btn--wa:hover{--_bg:#17633E}
 .btn svg{width:18px;height:18px;flex:none}
 .btn-row{display:flex;flex-wrap:wrap;gap:var(--sp-3)}
+@media (max-width:479px){ .btn{white-space:normal;text-align:center;padding-block:.6em} }
 
 .link{display:inline-flex;align-items:center;gap:.4em;font-weight:600;color:var(--c-accent-ink);
   text-decoration:underline;text-underline-offset:.25em;text-decoration-thickness:1px}
@@ -314,12 +315,52 @@ p{margin:0 0 var(--sp-4)}
 .svc-card li{display:flex;align-items:center;gap:var(--sp-2);padding:var(--sp-2) 0;border-top:1px dotted color-mix(in srgb, var(--c-ink) 18%, transparent)}
 .svc-card li::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--c-gold);flex:none}
 .svc-card .link{margin-top:auto;align-self:flex-start}
+/* Móvil: tarjetas compactas (ícono + título en fila, subservicios en línea) */
+@media (max-width:699px){
+  .svc-cards{gap:var(--sp-3)}
+  .svc-card{display:grid;grid-template-columns:44px 1fr;column-gap:var(--sp-4);padding:var(--sp-5);border-radius:var(--radius-m)}
+  .svc-card__ico{width:44px;height:44px;margin:0;grid-row:span 2}
+  .svc-card__ico svg{width:20px;height:20px}
+  .svc-card h3{font-size:1.35rem;margin:0;align-self:end}
+  .svc-card > p{margin:0;font-size:var(--fs-xs)}
+  .svc-card ul{grid-column:1 / -1;display:flex;flex-wrap:wrap;gap:var(--sp-1) var(--sp-3);margin:var(--sp-4) 0 var(--sp-3)}
+  .svc-card li{border:0;padding:0}
+  .svc-card .link{grid-column:1 / -1;font-size:var(--fs-sm)}
+}
+/* Promociones: tarjeta destacada a todo el ancho */
+@media (min-width:700px){
+  .svc-card[data-group="promo"]{grid-column:1 / -1;display:grid;column-gap:var(--sp-6);row-gap:var(--sp-2);align-items:center;
+    grid-template-columns:auto minmax(0,1fr) minmax(0,1.2fr) auto;
+    grid-template-areas:"ico title list link" "ico desc list link";
+    background:linear-gradient(110deg, var(--c-blush), var(--c-lilac));border-color:color-mix(in srgb, var(--c-gold) 45%, transparent)}
+  .svc-card[data-group="promo"] .svc-card__ico{grid-area:ico;margin:0}
+  .svc-card[data-group="promo"] h3{grid-area:title;margin:0;align-self:end}
+  .svc-card[data-group="promo"] > p{grid-area:desc;margin:0;align-self:start}
+  .svc-card[data-group="promo"] ul{grid-area:list;margin:0}
+  .svc-card[data-group="promo"] .link{grid-area:link;margin:0;align-self:center}
+}
+@media (min-width:700px) and (max-width:1079px){
+  .svc-card[data-group="promo"]{grid-template-columns:auto 1fr;grid-template-areas:"ico title" "ico desc" "list list" "link link"}
+  .svc-card[data-group="promo"] ul{margin-top:var(--sp-3)}
+}
 .svc-card[data-tint="blush"]{--_tint:var(--c-blush)}
 .svc-card[data-tint="lilac"]{--_tint:var(--c-lilac)}
 .svc-card[data-tint="peach"]{--_tint:var(--c-peach)}
 .svc-card[data-tint="sage"]{--_tint:var(--c-sage)}
 .svc-card[data-tint="butter"]{--_tint:var(--c-butter)}
 .svc-card[data-tint="card"]{--_tint:var(--c-card)}
+/* Filtro de categorías (chips) */
+.svc-filter{display:flex;gap:var(--sp-2);margin-bottom:var(--sp-6);overflow-x:auto;scrollbar-width:none;
+  margin-inline:-1.25rem;padding-inline:1.25rem;padding-block:2px}
+.svc-filter::-webkit-scrollbar{display:none}
+@media (min-width:700px){ .svc-filter{flex-wrap:wrap;overflow:visible;margin-inline:0;padding-inline:0} }
+.svc-filter .chip{flex:none;display:inline-flex;align-items:center;gap:.5em;background:var(--c-bg)}
+.svc-filter .chip[aria-selected="true"]{background:var(--c-ink)}
+.chip__n{font-size:.75rem;font-weight:700;opacity:.6;font-variant-numeric:tabular-nums}
+.svc-card[hidden]{display:none}
+.svc-card.is-shown{animation:svcIn var(--dur-med) var(--ease-out)}
+@keyframes svcIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.book__title{font-family:var(--font-display);font-size:1.5rem;line-height:1.1;margin-bottom:var(--sp-5)}
 .section-foot{margin-top:var(--sp-7);display:flex;flex-wrap:wrap;gap:var(--sp-4);align-items:center;justify-content:center;text-align:center}
 
 /* ---------- Galería (vista previa escalonada, esquinas redondeadas) ---------- */
