@@ -7,7 +7,7 @@ const CONFIG = {
   agendapro: "https://ameblounge.site.agendapro.com/cl/sucursal/25770",
   bookingInline: true,   // false = los botones "Reservar" abren AgendaPro en pestaña nueva
   reviews:   "https://link.agendapro.com/cl/ameblounge/49b17017/reviews/81e643b9-484a-4381-9655-ee2e82c45046",
-  instagram: "https://www.instagram.com/",   // TODO: reemplazar por el perfil real (p. ej. https://www.instagram.com/usuario/)
+  instagram: "https://www.instagram.com/amebeautylounge/",
   mapEmbed: "https://www.google.com/maps?q=Los%20Ingleses%20186%2C%20Chicureo%2C%20Colina%2C%20Chile&z=16&output=embed",
   // Mensajes de WhatsApp pre-armados según la sección del clic
   waMessages: {
@@ -93,13 +93,13 @@ const GALLERY = [
   { home: true, file: "brushing-01.webp", cat: "cabello",cap: "Brushing con cepillo redondo" }
 ];
 
-/* Equipo — nombres reales; roles y bios por confirmar. Fotos: assets/img/team/<nombre-apellido>.jpg */
+/* Equipo — nombres reales; cargos y frases DE EJEMPLO (por confirmar). Fotos: assets/img/team/<nombre-apellido>.jpg */
 const TEAM = [
-  { name: "Dayana Hinojosa", role: "Especialista", file: "dayana-hinojosa.jpg", sample: true, tagline: "Perfil por completar.", bio: "Cuéntanos su especialidad y experiencia para completar este perfil." },
-  { name: "Ely Oropeza",     role: "Especialista", file: "ely-oropeza.jpg",     sample: true, tagline: "Perfil por completar.", bio: "Cuéntanos su especialidad y experiencia para completar este perfil." },
-  { name: "Isamar Espinoza", role: "Especialista", file: "isamar-espinoza.jpg", sample: true, tagline: "Perfil por completar.", bio: "Cuéntanos su especialidad y experiencia para completar este perfil." },
-  { name: "Nicole Segovia",  role: "Especialista", file: "nicole-segovia.jpg",  sample: true, tagline: "Perfil por completar.", bio: "Cuéntanos su especialidad y experiencia para completar este perfil." },
-  { name: "Evelin Loyola",   role: "Especialista", file: "evelin-loyola.jpg",   sample: true, tagline: "Perfil por completar.", bio: "Cuéntanos su especialidad y experiencia para completar este perfil." }
+  { name: "Dayana Hinojosa", role: "Estilista · Colorista",        file: "dayana-hinojosa.jpg", tagline: "Color, cortes y brushing a tu medida." },
+  { name: "Ely Oropeza",     role: "Manicurista · Nail art",       file: "ely-oropeza.jpg",     tagline: "Esmaltado permanente, softgel y polygel." },
+  { name: "Isamar Espinoza", role: "Cosmetóloga",                  file: "isamar-espinoza.jpg", tagline: "Faciales, depilación y cuidado de la piel." },
+  { name: "Nicole Segovia",  role: "Lash & brow artist",           file: "nicole-segovia.jpg",  tagline: "Lifting, extensiones y laminado de cejas." },
+  { name: "Evelin Loyola",   role: "Masoterapeuta · Spa de pies",  file: "evelin-loyola.jpg",   tagline: "Masajes y pedicure para desconectar." }
 ];
 
 /* ============================================================
@@ -165,28 +165,15 @@ function renderGallery(){
 }
 
 function renderTeam(){
+  // Tarjetas compactas: las fotos actuales son de baja resolución, así que se muestran pequeñas y nítidas
   $("#team").innerHTML = TEAM.map((m, i) => `
-    <article class="member reveal" data-delay="${i % 4}">
-      <div class="member__photo">
-        ${imgBox("assets/img/team/" + m.file, `${m.name}, ${m.role}`)}
-        <div class="member__over" id="bio-${i}">
-          <p class="member__tag">${esc(m.tagline)}</p>
-          <p>${esc(m.bio)}</p>
-          <a class="js-book" href="#" target="_blank" rel="noopener">Agendar con ${esc(m.name.split(" ")[0])} →</a>
-        </div>
-      </div>
+    <article class="member member--compact reveal" data-delay="${i % 4}">
+      ${imgBox("assets/img/team/" + m.file, `${m.name}, ${m.role}`, "member__avatar")}
       <h3>${esc(m.name)}</h3>
-      <p class="role">${esc(m.role)} ${m.sample ? sampleBadge("Rol por confirmar") : ""}</p>
-            <button class="member__more" type="button" aria-expanded="false" aria-controls="bio-${i}">Ver perfil</button>
-    </article>`).join("");
-  // Táctil y teclado: el botón abre/cierra el perfil (en desktop también aparece con el cursor)
-  $("#team").addEventListener("click", e => {
-    const b = e.target.closest(".member__more"); if (!b) return;
-    const card = b.closest(".member"), open = !card.classList.contains("is-open");
-    $$(".member.is-open").forEach(c => { c.classList.remove("is-open"); $(".member__more", c).setAttribute("aria-expanded", "false"); $(".member__more", c).textContent = "Ver perfil"; });
-    card.classList.toggle("is-open", open);
-    b.setAttribute("aria-expanded", open); b.textContent = open ? "Cerrar" : "Ver perfil";
-  });
+      <p class="role">${esc(m.role)}</p>
+      <p class="member__tagline">${esc(m.tagline)}</p>
+      <a class="member__book js-book" href="#" target="_blank" rel="noopener">Agendar con ${esc(m.name.split(" ")[0])} →</a>
+    </article>`).join("") + `<p class="team__note">${sampleBadge("Cargos de ejemplo")}</p>`;
 }
 
 // Página de servicios: lista completa + índice fijo + barra de categorías (móvil) + buscador
@@ -503,7 +490,7 @@ function initSamples(){
    ============================================================ */
 // Cada bloque corre solo si su sección existe en la página actual
 const run = (sel, fn) => { if (!sel || $(sel)) fn(); };
-run("#gallery", renderGallery); run("#team", renderTeam); run("#reviews", renderReviews); run("#svcList", renderServices); run("#hoursBody", renderHours);
+run("#gallery", renderGallery); run("#team", renderTeam); run("#reviews", renderReviews); run(".carousel--feature", () => initCarousel($(".carousel--feature"))); run("#svcList", renderServices); run("#hoursBody", renderHours);
 wireLinks(); watchMedia();
 run(null, initHeader); run(null, initTheme); run("#mnav", initMenu); run("#heroVideo", initHero);
 run("#gallery", initGallery); run(".map", initMap); run("#booking", initBooking); run(".ig-video", initIgVideo); run(null, initReveal); run("#toggleSamples", initSamples);

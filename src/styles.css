@@ -764,3 +764,62 @@ textarea.input{min-height:96px;resize:vertical}
 .rev-score .stars{color:#D9A441}
 .review .stars{color:#D9A441}
 .hero__meta .stars{color:#F7D3DE}
+
+/* ============================================================
+   DESTACADOS — carrusel bajo el hero (reemplaza al split de 2 fotos)
+   ============================================================ */
+.feature{padding:var(--sp-3) 0 0}
+@media (min-width:700px){ .feature{padding:var(--sp-5) 0 0} }
+.carousel--feature{padding-inline:var(--sp-3)}
+@media (min-width:700px){ .carousel--feature{padding-inline:clamp(1.25rem, 3vw, 3.5rem)} }
+.carousel--feature .carousel__track{grid-auto-columns:86%;column-gap:var(--sp-3);scroll-padding-inline:0;padding-bottom:0}
+@media (min-width:700px){ .carousel--feature .carousel__track{grid-auto-columns:calc((100% - var(--sp-5)) / 2);column-gap:var(--sp-5)} }
+@media (min-width:1200px){ .carousel--feature .carousel__track{grid-auto-columns:calc((100% - 2 * var(--sp-5)) / 3)} }
+.carousel--feature .carousel__btn--prev{left:calc(var(--sp-3) + 8px)}
+.carousel--feature .carousel__btn--next{right:calc(var(--sp-3) + 8px)}
+@media (min-width:700px){
+  .carousel--feature .carousel__btn--prev{left:calc(clamp(1.25rem, 3vw, 3.5rem) - 22px)}
+  .carousel--feature .carousel__btn--next{right:calc(clamp(1.25rem, 3vw, 3.5rem) - 22px)}
+}
+.slide{position:relative;scroll-snap-align:start;aspect-ratio:4/5;border-radius:var(--radius-l);overflow:hidden;background:var(--c-surface)}
+.slide__link{position:absolute;inset:0;display:block;color:#FDF8F6;text-decoration:none}
+.slide .ph{position:absolute;inset:0}
+.slide img{transition:transform 1.2s var(--ease-out)}
+.slide:hover img{transform:scale(1.03)}
+.slide--promo{display:grid;place-items:center;padding:var(--sp-6);text-align:center;
+  background:radial-gradient(70% 60% at 85% 95%, rgba(226,170,170,.45), transparent 70%),
+             radial-gradient(60% 50% at 10% 5%, rgba(255,255,255,.7), transparent 70%), #F8ECE3;color:#3B2A31}
+.slide__promo{position:relative;z-index:1;display:grid;justify-items:center;gap:var(--sp-4);max-width:30ch}
+.slide__promo .eyebrow{margin:0;color:#8E4258}
+.slide__promo h2{font-size:clamp(2rem, 1.4rem + 2vw, 3rem);line-height:1.02}
+.slide__promo h2 em{font-style:italic;color:#8E4258}
+.slide__note{margin:0;color:#6E5A5C;font-size:var(--fs-sm)}
+.slide__promo .link{font-size:var(--fs-sm);color:#8E4258}
+.slide__sprig{top:var(--sp-4);right:var(--sp-4)}
+.slide__wave{position:absolute;left:0;right:0;bottom:16%;height:60px}
+
+/* ============================================================
+   EQUIPO — tarjetas compactas
+   ============================================================ */
+.member--compact{display:flex;flex-direction:column;align-items:center;text-align:center}
+.member__avatar{width:132px;aspect-ratio:1;border-radius:50%;margin-bottom:var(--sp-4);
+  box-shadow:0 0 0 1px var(--c-gold), 0 0 0 6px var(--c-bg), 0 0 0 7px color-mix(in srgb, var(--c-gold) 45%, transparent)}
+.member--compact h3{font-size:1.45rem}
+.member--compact .role{margin:var(--sp-1) 0 var(--sp-2)}
+.member__tagline{font-size:var(--fs-sm);color:var(--c-muted);margin:0 0 var(--sp-3);max-width:22ch;line-height:1.45}
+.member__book{font-size:var(--fs-xs);font-weight:600;color:var(--c-accent-ink);text-underline-offset:.25em}
+.team__note{grid-column:1 / -1;text-align:center;margin:0}
+
+/* Post "Una nueva experiencia" recreado en HTML (mismo lenguaje que los posts de apertura) */
+.ig__type{position:absolute;inset:0;display:grid;place-items:center;text-align:center;color:#8A6A40;
+  background:radial-gradient(60% 45% at 15% 90%, rgba(226,170,170,.45), transparent 70%), #F8EEE5}
+.ig__type p{margin:0;display:grid;gap:.25em;font-family:var(--font-body);font-weight:400;font-size:clamp(1rem, .8rem + .8vw, 1.35rem);letter-spacing:.12em}
+.ig__type b{font-family:var(--font-display);font-weight:400;font-size:clamp(2.6rem, 1.6rem + 3vw, 4.2rem);letter-spacing:0;line-height:1}
+.ig__type .ig__rule{display:flex;align-items:center;gap:.8em;justify-content:center}
+.ig__type .ig__rule::before,.ig__type .ig__rule::after{content:"";width:3.5em;height:1px;background:currentColor;opacity:.6}
+.ig__type small{font-size:.8em;letter-spacing:.3em}
+.ig__sprig{top:-8px;left:8px;transform:scaleX(-1)}
+.ig__wave{position:absolute;left:0;right:0;bottom:22%;height:50px}
+.slide__promo .eyebrow{letter-spacing:.2em}
+.slide__promo .eyebrow::before{display:none}
+.slide__wave{bottom:5%}

@@ -32,12 +32,10 @@ Lo marcado con la etiqueta amarilla en la página es contenido de ejemplo
 
 | Qué | Archivo esperado |
 |---|---|
-| Foto del salón (interior real) | `assets/img/espacio/salon-main.webp` (4:3, horizontal) |
-| Tercer post de Instagram ("Una nueva experiencia…") | `Media/ig-post-experiencia.webp` y luego `python3 tools/build_media.py` |
+| Foto real del salón (hoy es de referencia) | `Media/salon.jpg` y luego `python3 tools/build_media.py` |
+| Cargos reales del equipo | `src/app.js` → `TEAM` |
 | Fotos del equipo en buena resolución | `assets/img/team/<nombre-apellido>.jpg` (cuadradas, ≥ 600 px) |
-| Usuario de Instagram | `src/app.js` → `CONFIG.instagram` |
 | Horario real | `src/app.js` → `CONFIG.hours` |
-| Imagen del mapa (opcional) | `assets/img/espacio/mapa.webp` |
 
 ## Publicación
 

@@ -25,17 +25,44 @@
     </div>
   </div>
 </section>
-<!-- =================== SPLIT EDITORIAL =================== -->
-<div class="split" aria-label="Destacados">
-  <a class="split__item reveal" href="servicios.html#cabello">
-    <div class="ph" data-file="assets/img/destacado-brushing.webp"><img src="assets/img/destacado-brushing.webp" alt="Brushing con cepillo redondo y secador" loading="lazy" width="900" height="1125"></div>
-    <div class="split__cap"><h2>Brushing, ondas y peinados</h2><span>Ver servicios de cabello</span></div>
-  </a>
-  <a class="split__item reveal" data-delay="1" href="servicios.html#belleza">
-    <div class="ph" data-file="assets/img/destacado-manos.webp"><img src="assets/img/destacado-manos.webp" alt="Manicure con esmaltado permanente" loading="lazy" width="900" height="1125"></div>
-    <div class="split__cap"><h2>Manos y pies impecables</h2><span>Ver servicios de belleza</span></div>
-  </a>
-</div>
+<!-- =================== DESTACADOS (carrusel) =================== -->
+<section class="feature" aria-label="Destacados">
+  <div class="carousel carousel--feature reveal" role="region" aria-roledescription="carrusel" aria-label="Destacados de Âme">
+    <ul class="carousel__track" tabindex="0">
+      <li class="slide slide--promo">
+        <svg class="sprig slide__sprig sprig--tr" viewBox="0 0 170 200" aria-hidden="true"><path d="M152 6C126 52 98 104 58 196"/><path d="M135 37C120 22 105 19 92 23C104 33 118 39 135 37Z"/><path d="M135 37C120 30 105 26 92 23"/><path d="M127 53C140 42 153 40 162 44C154 54 141 57 127 53Z"/><path d="M127 53C139 49 151 46 162 44"/><path d="M112 80C96 68 82 67 70 73C84 83 98 86 112 80Z"/><path d="M112 80C98 76 84 74 70 73"/><path d="M103 98C117 88 131 88 142 94C132 103 118 105 103 98Z"/><path d="M103 98C116 95 129 94 142 94"/><path d="M87 127C71 117 57 118 46 125C59 134 74 135 87 127Z"/><path d="M87 127C73 124 59 124 46 125"/><path d="M79 144C93 135 107 136 117 142C107 150 93 151 79 144Z"/><path d="M79 144C92 142 104 141 117 142"/></svg>
+        <div class="slide__promo">
+          <p class="eyebrow">Promoción del mes</p>
+          <h2>Manicure + pedicure <em>con esmaltado permanente</em></h2>
+          <p class="slide__note">Un solo color, manos y pies en una misma visita.</p>
+          <a class="btn btn--accent js-book" href="#" target="_blank" rel="noopener">Reservar promo</a>
+          <a class="link" href="servicios.html#promociones">Ver todas las promociones →</a>
+        </div>
+        <svg class="wave slide__wave" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true"><path d="M0 44C240 8 480 72 760 46S1200 4 1440 30"/></svg>
+      </li>
+      <li class="slide"><a class="slide__link" href="#salon">
+        <div class="ph" data-file="assets/img/destacado-salon.webp"><img src="assets/img/destacado-salon.webp" alt="Interior del salón con espejos redondos y luz cálida" loading="lazy" width="900" height="1125"></div>
+        <div class="split__cap"><h2>Conoce el salón</h2><span>Los Ingleses 186, Chicureo</span></div>
+      </a></li>
+      <li class="slide slide--post"><a class="slide__link js-ig" href="#" target="_blank" rel="noopener" aria-label="Ver en Instagram: Peluquería, spa de manos y pies, pestañas, cejas, estética y depilación">
+        <div class="ph" data-file="assets/img/instagram/post-01.webp"><img src="assets/img/instagram/post-01.webp" alt="Peluquería, spa de manos y pies, pestañas, cejas, estética y depilación" loading="lazy" width="720" height="900"></div>
+      </a></li>
+      <li class="slide"><a class="slide__link" href="servicios.html#cabello">
+        <div class="ph" data-file="assets/img/destacado-brushing.webp"><img src="assets/img/destacado-brushing.webp" alt="Brushing con cepillo redondo y secador" loading="lazy" width="900" height="1125"></div>
+        <div class="split__cap"><h2>Brushing, ondas y peinados</h2><span>Ver servicios de cabello</span></div>
+      </a></li>
+      <li class="slide slide--post"><a class="slide__link js-ig" href="#" target="_blank" rel="noopener" aria-label="Ver en Instagram: Logo de Âme Beauty Lounge">
+        <div class="ph" data-file="assets/img/instagram/post-02.webp"><img src="assets/img/instagram/post-02.webp" alt="Logo de Âme Beauty Lounge" loading="lazy" width="720" height="900"></div>
+      </a></li>
+      <li class="slide"><a class="slide__link" href="servicios.html#belleza">
+        <div class="ph" data-file="assets/img/destacado-manos.webp"><img src="assets/img/destacado-manos.webp" alt="Manicure con esmaltado permanente" loading="lazy" width="900" height="1125"></div>
+        <div class="split__cap"><h2>Manos y pies impecables</h2><span>Ver servicios de belleza</span></div>
+      </a></li>
+    </ul>
+    <button class="carousel__btn carousel__btn--prev" type="button" aria-label="Destacado anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button>
+    <button class="carousel__btn carousel__btn--next" type="button" aria-label="Siguiente destacado"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>
+  </div>
+</section>
 <!-- =================== NOSOTROS =================== -->
 <section class="section has-sprig" id="nosotros" aria-labelledby="about-title">
   <svg class="sprig sprig--tr" viewBox="0 0 170 200" aria-hidden="true"><path d="M152 6C126 52 98 104 58 196"/><path d="M135 37C120 22 105 19 92 23C104 33 118 39 135 37Z"/><path d="M135 37C120 30 105 26 92 23"/><path d="M127 53C140 42 153 40 162 44C154 54 141 57 127 53Z"/><path d="M127 53C139 49 151 46 162 44"/><path d="M112 80C96 68 82 67 70 73C84 83 98 86 112 80Z"/><path d="M112 80C98 76 84 74 70 73"/><path d="M103 98C117 88 131 88 142 94C132 103 118 105 103 98Z"/><path d="M103 98C116 95 129 94 142 94"/><path d="M87 127C71 117 57 118 46 125C59 134 74 135 87 127Z"/><path d="M87 127C73 124 59 124 46 125"/><path d="M79 144C93 135 107 136 117 142C107 150 93 151 79 144Z"/><path d="M79 144C92 142 104 141 117 142"/></svg>
@@ -114,7 +141,7 @@
     <div class="salon__text reveal">
       <div>
         <h2 id="salon-title">El salón</h2>
-        <p>Un espacio luminoso y tranquilo en Los Ingleses, pensado para que llegues y desconectes. <span class="sample">Foto pendiente</span></p>
+        <p>Un espacio luminoso y tranquilo en Los Ingleses, pensado para que llegues y desconectes. <span class="sample">Foto de referencia</span></p>
         <a class="btn btn--ghost js-book" href="#" target="_blank" rel="noopener">Reservar hora</a>
       </div>
       <ul class="salon-list">
@@ -124,7 +151,7 @@
         <li><a href="#visitanos">Los Ingleses 186, Chicureo</a></li>
       </ul>
     </div>
-    <div class="ph salon__img reveal" data-delay="1" data-file="assets/img/espacio/salon-main.webp"><img src="assets/img/espacio/salon-main.webp" alt="Interior de Âme Beauty Lounge" loading="lazy" width="1600" height="1200"></div>
+    <div class="ph salon__img reveal" data-delay="1" data-file="assets/img/espacio/salon-main.webp"><img src="assets/img/espacio/salon-main.webp" alt="Interior de salón con espejos redondos, luz cálida y plantas" loading="lazy" width="1600" height="1200"></div>
   </div>
 </section>
 
@@ -136,7 +163,7 @@
         <p class="eyebrow">Equipo</p>
         <h2 class="h2" id="team-title">Las manos detrás <em>de cada resultado</em></h2>
       </div>
-      <p class="lead reveal" data-delay="1">Cinco profesionales que te escuchan, te asesoran con honestidad y cuidan cada detalle.</p>
+      <p class="lead reveal" data-delay="1">Cinco profesionales que te escuchan, te asesoran con honestidad y cuidan cada detalle. Elige con quién atenderte al reservar.</p>
     </div>
     <div class="team" id="team"><!-- JS --></div>
   </div>
@@ -157,7 +184,11 @@
       <svg class="ig__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
     </a>
     <a class="ig__post ig__post--real reveal" data-delay="2" href="https://www.instagram.com/p/Da1IMMMP2p3/" target="_blank" rel="noopener" aria-label="Ver en Instagram: Una nueva experiencia de belleza en Chicureo">
-      <div class="ph" data-file="assets/img/instagram/post-03.webp"><img src="assets/img/instagram/post-03.webp" alt="Post de Instagram: Una nueva experiencia de belleza en Chicureo" loading="lazy" width="720" height="900"></div>
+      <div class="ig__type" aria-hidden="true">
+        <svg class="sprig slide__sprig sprig--tr" viewBox="0 0 170 200" aria-hidden="true"><path d="M152 6C126 52 98 104 58 196"/><path d="M135 37C120 22 105 19 92 23C104 33 118 39 135 37Z"/><path d="M135 37C120 30 105 26 92 23"/><path d="M127 53C140 42 153 40 162 44C154 54 141 57 127 53Z"/><path d="M127 53C139 49 151 46 162 44"/><path d="M112 80C96 68 82 67 70 73C84 83 98 86 112 80Z"/><path d="M112 80C98 76 84 74 70 73"/><path d="M103 98C117 88 131 88 142 94C132 103 118 105 103 98Z"/><path d="M103 98C116 95 129 94 142 94"/><path d="M87 127C71 117 57 118 46 125C59 134 74 135 87 127Z"/><path d="M87 127C73 124 59 124 46 125"/><path d="M79 144C93 135 107 136 117 142C107 150 93 151 79 144Z"/><path d="M79 144C92 142 104 141 117 142"/></svg>
+        <p><span>Una nueva</span><b>experiencia</b><span class="ig__rule">de belleza</span><small>en Chicureo</small></p>
+        <svg class="wave ig__wave" viewBox="0 0 1440 80" preserveAspectRatio="none"><path d="M0 44C240 8 480 72 760 46S1200 4 1440 30"/></svg>
+      </div>
       <svg class="ig__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
     </a>
   </div>

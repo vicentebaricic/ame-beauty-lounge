@@ -19,6 +19,7 @@ SRC = {
     "C": "haircolouring.jpg",                          # coloración con pincel
     "F": "ionela-mat-16mHHrY3PUk-unsplash.jpg",        # facial
     "N": "manicure.jpg",                               # manicure
+    "S": "salon.jpg",                                  # interior de salón (referencia de stock)
 }
 
 def grade(im):
@@ -82,6 +83,10 @@ JOBS = [
     ("G", .55, .45, 4/5, 1.0, "galeria/ondas-01.webp", 720),
     ("A", .35, .5, 4/5, 1.5, "galeria/color-02.webp", 720),
     ("V5", .5, .5, 4/5, 1.0, "galeria/brushing-01.webp", 720),
+    # el salón + mapa + slide
+    ("S", .5, .5, 4/3, 1.0, "espacio/salon-main.webp", 1600),
+    ("S", .55, .55, 16/9, 1.15, "espacio/mapa.webp", 1600),
+    ("S", .45, .55, 4/5, 1.0, "destacado-salon.webp", 900),
     # CTA final
     ("G", .5, .45, 16/9, 1.0, "espacio/cta.webp", 1600),
 ]

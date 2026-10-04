@@ -791,6 +791,65 @@ textarea.input{min-height:96px;resize:vertical}
 .rev-score .stars{color:#D9A441}
 .review .stars{color:#D9A441}
 .hero__meta .stars{color:#F7D3DE}
+
+/* ============================================================
+   DESTACADOS — carrusel bajo el hero (reemplaza al split de 2 fotos)
+   ============================================================ */
+.feature{padding:var(--sp-3) 0 0}
+@media (min-width:700px){ .feature{padding:var(--sp-5) 0 0} }
+.carousel--feature{padding-inline:var(--sp-3)}
+@media (min-width:700px){ .carousel--feature{padding-inline:clamp(1.25rem, 3vw, 3.5rem)} }
+.carousel--feature .carousel__track{grid-auto-columns:86%;column-gap:var(--sp-3);scroll-padding-inline:0;padding-bottom:0}
+@media (min-width:700px){ .carousel--feature .carousel__track{grid-auto-columns:calc((100% - var(--sp-5)) / 2);column-gap:var(--sp-5)} }
+@media (min-width:1200px){ .carousel--feature .carousel__track{grid-auto-columns:calc((100% - 2 * var(--sp-5)) / 3)} }
+.carousel--feature .carousel__btn--prev{left:calc(var(--sp-3) + 8px)}
+.carousel--feature .carousel__btn--next{right:calc(var(--sp-3) + 8px)}
+@media (min-width:700px){
+  .carousel--feature .carousel__btn--prev{left:calc(clamp(1.25rem, 3vw, 3.5rem) - 22px)}
+  .carousel--feature .carousel__btn--next{right:calc(clamp(1.25rem, 3vw, 3.5rem) - 22px)}
+}
+.slide{position:relative;scroll-snap-align:start;aspect-ratio:4/5;border-radius:var(--radius-l);overflow:hidden;background:var(--c-surface)}
+.slide__link{position:absolute;inset:0;display:block;color:#FDF8F6;text-decoration:none}
+.slide .ph{position:absolute;inset:0}
+.slide img{transition:transform 1.2s var(--ease-out)}
+.slide:hover img{transform:scale(1.03)}
+.slide--promo{display:grid;place-items:center;padding:var(--sp-6);text-align:center;
+  background:radial-gradient(70% 60% at 85% 95%, rgba(226,170,170,.45), transparent 70%),
+             radial-gradient(60% 50% at 10% 5%, rgba(255,255,255,.7), transparent 70%), #F8ECE3;color:#3B2A31}
+.slide__promo{position:relative;z-index:1;display:grid;justify-items:center;gap:var(--sp-4);max-width:30ch}
+.slide__promo .eyebrow{margin:0;color:#8E4258}
+.slide__promo h2{font-size:clamp(2rem, 1.4rem + 2vw, 3rem);line-height:1.02}
+.slide__promo h2 em{font-style:italic;color:#8E4258}
+.slide__note{margin:0;color:#6E5A5C;font-size:var(--fs-sm)}
+.slide__promo .link{font-size:var(--fs-sm);color:#8E4258}
+.slide__sprig{top:var(--sp-4);right:var(--sp-4)}
+.slide__wave{position:absolute;left:0;right:0;bottom:16%;height:60px}
+
+/* ============================================================
+   EQUIPO — tarjetas compactas
+   ============================================================ */
+.member--compact{display:flex;flex-direction:column;align-items:center;text-align:center}
+.member__avatar{width:132px;aspect-ratio:1;border-radius:50%;margin-bottom:var(--sp-4);
+  box-shadow:0 0 0 1px var(--c-gold), 0 0 0 6px var(--c-bg), 0 0 0 7px color-mix(in srgb, var(--c-gold) 45%, transparent)}
+.member--compact h3{font-size:1.45rem}
+.member--compact .role{margin:var(--sp-1) 0 var(--sp-2)}
+.member__tagline{font-size:var(--fs-sm);color:var(--c-muted);margin:0 0 var(--sp-3);max-width:22ch;line-height:1.45}
+.member__book{font-size:var(--fs-xs);font-weight:600;color:var(--c-accent-ink);text-underline-offset:.25em}
+.team__note{grid-column:1 / -1;text-align:center;margin:0}
+
+/* Post "Una nueva experiencia" recreado en HTML (mismo lenguaje que los posts de apertura) */
+.ig__type{position:absolute;inset:0;display:grid;place-items:center;text-align:center;color:#8A6A40;
+  background:radial-gradient(60% 45% at 15% 90%, rgba(226,170,170,.45), transparent 70%), #F8EEE5}
+.ig__type p{margin:0;display:grid;gap:.25em;font-family:var(--font-body);font-weight:400;font-size:clamp(1rem, .8rem + .8vw, 1.35rem);letter-spacing:.12em}
+.ig__type b{font-family:var(--font-display);font-weight:400;font-size:clamp(2.6rem, 1.6rem + 3vw, 4.2rem);letter-spacing:0;line-height:1}
+.ig__type .ig__rule{display:flex;align-items:center;gap:.8em;justify-content:center}
+.ig__type .ig__rule::before,.ig__type .ig__rule::after{content:"";width:3.5em;height:1px;background:currentColor;opacity:.6}
+.ig__type small{font-size:.8em;letter-spacing:.3em}
+.ig__sprig{top:-8px;left:8px;transform:scaleX(-1)}
+.ig__wave{position:absolute;left:0;right:0;bottom:22%;height:50px}
+.slide__promo .eyebrow{letter-spacing:.2em}
+.slide__promo .eyebrow::before{display:none}
+.slide__wave{bottom:5%}
 </style>
 </head>
 <body class="page-home">
@@ -874,17 +933,44 @@ textarea.input{min-height:96px;resize:vertical}
     </div>
   </div>
 </section>
-<!-- =================== SPLIT EDITORIAL =================== -->
-<div class="split" aria-label="Destacados">
-  <a class="split__item reveal" href="servicios.html#cabello">
-    <div class="ph" data-file="assets/img/destacado-brushing.webp"><img src="assets/img/destacado-brushing.webp" alt="Brushing con cepillo redondo y secador" loading="lazy" width="900" height="1125"></div>
-    <div class="split__cap"><h2>Brushing, ondas y peinados</h2><span>Ver servicios de cabello</span></div>
-  </a>
-  <a class="split__item reveal" data-delay="1" href="servicios.html#belleza">
-    <div class="ph" data-file="assets/img/destacado-manos.webp"><img src="assets/img/destacado-manos.webp" alt="Manicure con esmaltado permanente" loading="lazy" width="900" height="1125"></div>
-    <div class="split__cap"><h2>Manos y pies impecables</h2><span>Ver servicios de belleza</span></div>
-  </a>
-</div>
+<!-- =================== DESTACADOS (carrusel) =================== -->
+<section class="feature" aria-label="Destacados">
+  <div class="carousel carousel--feature reveal" role="region" aria-roledescription="carrusel" aria-label="Destacados de Âme">
+    <ul class="carousel__track" tabindex="0">
+      <li class="slide slide--promo">
+        <svg class="sprig slide__sprig sprig--tr" viewBox="0 0 170 200" aria-hidden="true"><path d="M152 6C126 52 98 104 58 196"/><path d="M135 37C120 22 105 19 92 23C104 33 118 39 135 37Z"/><path d="M135 37C120 30 105 26 92 23"/><path d="M127 53C140 42 153 40 162 44C154 54 141 57 127 53Z"/><path d="M127 53C139 49 151 46 162 44"/><path d="M112 80C96 68 82 67 70 73C84 83 98 86 112 80Z"/><path d="M112 80C98 76 84 74 70 73"/><path d="M103 98C117 88 131 88 142 94C132 103 118 105 103 98Z"/><path d="M103 98C116 95 129 94 142 94"/><path d="M87 127C71 117 57 118 46 125C59 134 74 135 87 127Z"/><path d="M87 127C73 124 59 124 46 125"/><path d="M79 144C93 135 107 136 117 142C107 150 93 151 79 144Z"/><path d="M79 144C92 142 104 141 117 142"/></svg>
+        <div class="slide__promo">
+          <p class="eyebrow">Promoción del mes</p>
+          <h2>Manicure + pedicure <em>con esmaltado permanente</em></h2>
+          <p class="slide__note">Un solo color, manos y pies en una misma visita.</p>
+          <a class="btn btn--accent js-book" href="#" target="_blank" rel="noopener">Reservar promo</a>
+          <a class="link" href="servicios.html#promociones">Ver todas las promociones →</a>
+        </div>
+        <svg class="wave slide__wave" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true"><path d="M0 44C240 8 480 72 760 46S1200 4 1440 30"/></svg>
+      </li>
+      <li class="slide"><a class="slide__link" href="#salon">
+        <div class="ph" data-file="assets/img/destacado-salon.webp"><img src="assets/img/destacado-salon.webp" alt="Interior del salón con espejos redondos y luz cálida" loading="lazy" width="900" height="1125"></div>
+        <div class="split__cap"><h2>Conoce el salón</h2><span>Los Ingleses 186, Chicureo</span></div>
+      </a></li>
+      <li class="slide slide--post"><a class="slide__link js-ig" href="#" target="_blank" rel="noopener" aria-label="Ver en Instagram: Peluquería, spa de manos y pies, pestañas, cejas, estética y depilación">
+        <div class="ph" data-file="assets/img/instagram/post-01.webp"><img src="assets/img/instagram/post-01.webp" alt="Peluquería, spa de manos y pies, pestañas, cejas, estética y depilación" loading="lazy" width="720" height="900"></div>
+      </a></li>
+      <li class="slide"><a class="slide__link" href="servicios.html#cabello">
+        <div class="ph" data-file="assets/img/destacado-brushing.webp"><img src="assets/img/destacado-brushing.webp" alt="Brushing con cepillo redondo y secador" loading="lazy" width="900" height="1125"></div>
+        <div class="split__cap"><h2>Brushing, ondas y peinados</h2><span>Ver servicios de cabello</span></div>
+      </a></li>
+      <li class="slide slide--post"><a class="slide__link js-ig" href="#" target="_blank" rel="noopener" aria-label="Ver en Instagram: Logo de Âme Beauty Lounge">
+        <div class="ph" data-file="assets/img/instagram/post-02.webp"><img src="assets/img/instagram/post-02.webp" alt="Logo de Âme Beauty Lounge" loading="lazy" width="720" height="900"></div>
+      </a></li>
+      <li class="slide"><a class="slide__link" href="servicios.html#belleza">
+        <div class="ph" data-file="assets/img/destacado-manos.webp"><img src="assets/img/destacado-manos.webp" alt="Manicure con esmaltado permanente" loading="lazy" width="900" height="1125"></div>
+        <div class="split__cap"><h2>Manos y pies impecables</h2><span>Ver servicios de belleza</span></div>
+      </a></li>
+    </ul>
+    <button class="carousel__btn carousel__btn--prev" type="button" aria-label="Destacado anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button>
+    <button class="carousel__btn carousel__btn--next" type="button" aria-label="Siguiente destacado"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>
+  </div>
+</section>
 <!-- =================== NOSOTROS =================== -->
 <section class="section has-sprig" id="nosotros" aria-labelledby="about-title">
   <svg class="sprig sprig--tr" viewBox="0 0 170 200" aria-hidden="true"><path d="M152 6C126 52 98 104 58 196"/><path d="M135 37C120 22 105 19 92 23C104 33 118 39 135 37Z"/><path d="M135 37C120 30 105 26 92 23"/><path d="M127 53C140 42 153 40 162 44C154 54 141 57 127 53Z"/><path d="M127 53C139 49 151 46 162 44"/><path d="M112 80C96 68 82 67 70 73C84 83 98 86 112 80Z"/><path d="M112 80C98 76 84 74 70 73"/><path d="M103 98C117 88 131 88 142 94C132 103 118 105 103 98Z"/><path d="M103 98C116 95 129 94 142 94"/><path d="M87 127C71 117 57 118 46 125C59 134 74 135 87 127Z"/><path d="M87 127C73 124 59 124 46 125"/><path d="M79 144C93 135 107 136 117 142C107 150 93 151 79 144Z"/><path d="M79 144C92 142 104 141 117 142"/></svg>
@@ -963,7 +1049,7 @@ textarea.input{min-height:96px;resize:vertical}
     <div class="salon__text reveal">
       <div>
         <h2 id="salon-title">El salón</h2>
-        <p>Un espacio luminoso y tranquilo en Los Ingleses, pensado para que llegues y desconectes. <span class="sample">Foto pendiente</span></p>
+        <p>Un espacio luminoso y tranquilo en Los Ingleses, pensado para que llegues y desconectes. <span class="sample">Foto de referencia</span></p>
         <a class="btn btn--ghost js-book" href="#" target="_blank" rel="noopener">Reservar hora</a>
       </div>
       <ul class="salon-list">
@@ -973,7 +1059,7 @@ textarea.input{min-height:96px;resize:vertical}
         <li><a href="#visitanos">Los Ingleses 186, Chicureo</a></li>
       </ul>
     </div>
-    <div class="ph salon__img reveal" data-delay="1" data-file="assets/img/espacio/salon-main.webp"><img src="assets/img/espacio/salon-main.webp" alt="Interior de Âme Beauty Lounge" loading="lazy" width="1600" height="1200"></div>
+    <div class="ph salon__img reveal" data-delay="1" data-file="assets/img/espacio/salon-main.webp"><img src="assets/img/espacio/salon-main.webp" alt="Interior de salón con espejos redondos, luz cálida y plantas" loading="lazy" width="1600" height="1200"></div>
   </div>
 </section>
 
@@ -985,7 +1071,7 @@ textarea.input{min-height:96px;resize:vertical}
         <p class="eyebrow">Equipo</p>
         <h2 class="h2" id="team-title">Las manos detrás <em>de cada resultado</em></h2>
       </div>
-      <p class="lead reveal" data-delay="1">Cinco profesionales que te escuchan, te asesoran con honestidad y cuidan cada detalle.</p>
+      <p class="lead reveal" data-delay="1">Cinco profesionales que te escuchan, te asesoran con honestidad y cuidan cada detalle. Elige con quién atenderte al reservar.</p>
     </div>
     <div class="team" id="team"><!-- JS --></div>
   </div>
@@ -1006,7 +1092,11 @@ textarea.input{min-height:96px;resize:vertical}
       <svg class="ig__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
     </a>
     <a class="ig__post ig__post--real reveal" data-delay="2" href="https://www.instagram.com/p/Da1IMMMP2p3/" target="_blank" rel="noopener" aria-label="Ver en Instagram: Una nueva experiencia de belleza en Chicureo">
-      <div class="ph" data-file="assets/img/instagram/post-03.webp"><img src="assets/img/instagram/post-03.webp" alt="Post de Instagram: Una nueva experiencia de belleza en Chicureo" loading="lazy" width="720" height="900"></div>
+      <div class="ig__type" aria-hidden="true">
+        <svg class="sprig slide__sprig sprig--tr" viewBox="0 0 170 200" aria-hidden="true"><path d="M152 6C126 52 98 104 58 196"/><path d="M135 37C120 22 105 19 92 23C104 33 118 39 135 37Z"/><path d="M135 37C120 30 105 26 92 23"/><path d="M127 53C140 42 153 40 162 44C154 54 141 57 127 53Z"/><path d="M127 53C139 49 151 46 162 44"/><path d="M112 80C96 68 82 67 70 73C84 83 98 86 112 80Z"/><path d="M112 80C98 76 84 74 70 73"/><path d="M103 98C117 88 131 88 142 94C132 103 118 105 103 98Z"/><path d="M103 98C116 95 129 94 142 94"/><path d="M87 127C71 117 57 118 46 125C59 134 74 135 87 127Z"/><path d="M87 127C73 124 59 124 46 125"/><path d="M79 144C93 135 107 136 117 142C107 150 93 151 79 144Z"/><path d="M79 144C92 142 104 141 117 142"/></svg>
+        <p><span>Una nueva</span><b>experiencia</b><span class="ig__rule">de belleza</span><small>en Chicureo</small></p>
+        <svg class="wave ig__wave" viewBox="0 0 1440 80" preserveAspectRatio="none"><path d="M0 44C240 8 480 72 760 46S1200 4 1440 30"/></svg>
+      </div>
       <svg class="ig__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
     </a>
   </div>
@@ -1166,7 +1256,7 @@ const CONFIG = {
   agendapro: "https://ameblounge.site.agendapro.com/cl/sucursal/25770",
   bookingInline: true,   // false = los botones "Reservar" abren AgendaPro en pestaña nueva
   reviews:   "https://link.agendapro.com/cl/ameblounge/49b17017/reviews/81e643b9-484a-4381-9655-ee2e82c45046",
-  instagram: "https://www.instagram.com/",   // TODO: reemplazar por el perfil real (p. ej. https://www.instagram.com/usuario/)
+  instagram: "https://www.instagram.com/amebeautylounge/",
   mapEmbed: "https://www.google.com/maps?q=Los%20Ingleses%20186%2C%20Chicureo%2C%20Colina%2C%20Chile&z=16&output=embed",
   // Mensajes de WhatsApp pre-armados según la sección del clic
   waMessages: {
@@ -1252,13 +1342,13 @@ const GALLERY = [
   { home: true, file: "brushing-01.webp", cat: "cabello",cap: "Brushing con cepillo redondo" }
 ];
 
-/* Equipo — nombres reales; roles y bios por confirmar. Fotos: assets/img/team/<nombre-apellido>.jpg */
+/* Equipo — nombres reales; cargos y frases DE EJEMPLO (por confirmar). Fotos: assets/img/team/<nombre-apellido>.jpg */
 const TEAM = [
-  { name: "Dayana Hinojosa", role: "Especialista", file: "dayana-hinojosa.jpg", sample: true, tagline: "Perfil por completar.", bio: "Cuéntanos su especialidad y experiencia para completar este perfil." },
-  { name: "Ely Oropeza",     role: "Especialista", file: "ely-oropeza.jpg",     sample: true, tagline: "Perfil por completar.", bio: "Cuéntanos su especialidad y experiencia para completar este perfil." },
-  { name: "Isamar Espinoza", role: "Especialista", file: "isamar-espinoza.jpg", sample: true, tagline: "Perfil por completar.", bio: "Cuéntanos su especialidad y experiencia para completar este perfil." },
-  { name: "Nicole Segovia",  role: "Especialista", file: "nicole-segovia.jpg",  sample: true, tagline: "Perfil por completar.", bio: "Cuéntanos su especialidad y experiencia para completar este perfil." },
-  { name: "Evelin Loyola",   role: "Especialista", file: "evelin-loyola.jpg",   sample: true, tagline: "Perfil por completar.", bio: "Cuéntanos su especialidad y experiencia para completar este perfil." }
+  { name: "Dayana Hinojosa", role: "Estilista · Colorista",        file: "dayana-hinojosa.jpg", tagline: "Color, cortes y brushing a tu medida." },
+  { name: "Ely Oropeza",     role: "Manicurista · Nail art",       file: "ely-oropeza.jpg",     tagline: "Esmaltado permanente, softgel y polygel." },
+  { name: "Isamar Espinoza", role: "Cosmetóloga",                  file: "isamar-espinoza.jpg", tagline: "Faciales, depilación y cuidado de la piel." },
+  { name: "Nicole Segovia",  role: "Lash & brow artist",           file: "nicole-segovia.jpg",  tagline: "Lifting, extensiones y laminado de cejas." },
+  { name: "Evelin Loyola",   role: "Masoterapeuta · Spa de pies",  file: "evelin-loyola.jpg",   tagline: "Masajes y pedicure para desconectar." }
 ];
 
 /* ============================================================
@@ -1324,28 +1414,15 @@ function renderGallery(){
 }
 
 function renderTeam(){
+  // Tarjetas compactas: las fotos actuales son de baja resolución, así que se muestran pequeñas y nítidas
   $("#team").innerHTML = TEAM.map((m, i) => `
-    <article class="member reveal" data-delay="${i % 4}">
-      <div class="member__photo">
-        ${imgBox("assets/img/team/" + m.file, `${m.name}, ${m.role}`)}
-        <div class="member__over" id="bio-${i}">
-          <p class="member__tag">${esc(m.tagline)}</p>
-          <p>${esc(m.bio)}</p>
-          <a class="js-book" href="#" target="_blank" rel="noopener">Agendar con ${esc(m.name.split(" ")[0])} →</a>
-        </div>
-      </div>
+    <article class="member member--compact reveal" data-delay="${i % 4}">
+      ${imgBox("assets/img/team/" + m.file, `${m.name}, ${m.role}`, "member__avatar")}
       <h3>${esc(m.name)}</h3>
-      <p class="role">${esc(m.role)} ${m.sample ? sampleBadge("Rol por confirmar") : ""}</p>
-            <button class="member__more" type="button" aria-expanded="false" aria-controls="bio-${i}">Ver perfil</button>
-    </article>`).join("");
-  // Táctil y teclado: el botón abre/cierra el perfil (en desktop también aparece con el cursor)
-  $("#team").addEventListener("click", e => {
-    const b = e.target.closest(".member__more"); if (!b) return;
-    const card = b.closest(".member"), open = !card.classList.contains("is-open");
-    $$(".member.is-open").forEach(c => { c.classList.remove("is-open"); $(".member__more", c).setAttribute("aria-expanded", "false"); $(".member__more", c).textContent = "Ver perfil"; });
-    card.classList.toggle("is-open", open);
-    b.setAttribute("aria-expanded", open); b.textContent = open ? "Cerrar" : "Ver perfil";
-  });
+      <p class="role">${esc(m.role)}</p>
+      <p class="member__tagline">${esc(m.tagline)}</p>
+      <a class="member__book js-book" href="#" target="_blank" rel="noopener">Agendar con ${esc(m.name.split(" ")[0])} →</a>
+    </article>`).join("") + `<p class="team__note">${sampleBadge("Cargos de ejemplo")}</p>`;
 }
 
 // Página de servicios: lista completa + índice fijo + barra de categorías (móvil) + buscador
@@ -1662,7 +1739,7 @@ function initSamples(){
    ============================================================ */
 // Cada bloque corre solo si su sección existe en la página actual
 const run = (sel, fn) => { if (!sel || $(sel)) fn(); };
-run("#gallery", renderGallery); run("#team", renderTeam); run("#reviews", renderReviews); run("#svcList", renderServices); run("#hoursBody", renderHours);
+run("#gallery", renderGallery); run("#team", renderTeam); run("#reviews", renderReviews); run(".carousel--feature", () => initCarousel($(".carousel--feature"))); run("#svcList", renderServices); run("#hoursBody", renderHours);
 wireLinks(); watchMedia();
 run(null, initHeader); run(null, initTheme); run("#mnav", initMenu); run("#heroVideo", initHero);
 run("#gallery", initGallery); run(".map", initMap); run("#booking", initBooking); run(".ig-video", initIgVideo); run(null, initReveal); run("#toggleSamples", initSamples);
