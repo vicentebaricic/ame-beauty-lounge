@@ -766,26 +766,13 @@ textarea.input{min-height:96px;resize:vertical}
 .hero__meta .stars{color:#F7D3DE}
 
 /* ============================================================
-   DESTACADOS — carrusel bajo el hero (reemplaza al split de 2 fotos)
+   PROMOCIÓN DEL MES — tarjeta destacada entre "Nosotros" y "Servicios"
    ============================================================ */
-.feature{padding:var(--sp-3) 0 0}
-@media (min-width:700px){ .feature{padding:var(--sp-5) 0 0} }
-.carousel--feature{padding-inline:var(--sp-3)}
-@media (min-width:700px){ .carousel--feature{padding-inline:clamp(1.25rem, 3vw, 3.5rem)} }
-.carousel--feature .carousel__track{grid-auto-columns:86%;column-gap:var(--sp-3);scroll-padding-inline:0;padding-bottom:0}
-@media (min-width:700px){ .carousel--feature .carousel__track{grid-auto-columns:calc((100% - var(--sp-5)) / 2);column-gap:var(--sp-5)} }
-@media (min-width:1200px){ .carousel--feature .carousel__track{grid-auto-columns:calc((100% - 2 * var(--sp-5)) / 3)} }
-.carousel--feature .carousel__btn--prev{left:calc(var(--sp-3) + 8px)}
-.carousel--feature .carousel__btn--next{right:calc(var(--sp-3) + 8px)}
-@media (min-width:700px){
-  .carousel--feature .carousel__btn--prev{left:calc(clamp(1.25rem, 3vw, 3.5rem) - 22px)}
-  .carousel--feature .carousel__btn--next{right:calc(clamp(1.25rem, 3vw, 3.5rem) - 22px)}
-}
+.promo-sec{padding:0 0 var(--sp-8)}
+@media (min-width:900px){ .promo-sec{padding-bottom:var(--sp-9)} }
+.slide.promo-card{width:min(100% - 1.5rem, var(--container));margin-inline:auto;aspect-ratio:auto;min-height:clamp(460px, 42vw, 540px)}
+@media (min-width:900px){ .promo-card .slide__promo{max-width:34ch} .promo-card .slide__promo h2{font-size:clamp(2.6rem, 1.6rem + 2vw, 3.6rem)} .promo-card .slide__sprig{right:8%;width:150px} }
 .slide{position:relative;scroll-snap-align:start;aspect-ratio:4/5;border-radius:var(--radius-l);overflow:hidden;background:var(--c-surface)}
-.slide__link{position:absolute;inset:0;display:block;color:#FDF8F6;text-decoration:none}
-.slide .ph{position:absolute;inset:0}
-.slide img{transition:transform 1.2s var(--ease-out)}
-.slide:hover img{transform:scale(1.03)}
 .slide--promo{display:grid;place-items:center;padding:var(--sp-6);text-align:center;
   background:radial-gradient(70% 60% at 85% 95%, rgba(226,170,170,.45), transparent 70%),
              radial-gradient(60% 50% at 10% 5%, rgba(255,255,255,.7), transparent 70%), #F8ECE3;color:#3B2A31}
@@ -823,3 +810,4 @@ textarea.input{min-height:96px;resize:vertical}
 .slide__promo .eyebrow{letter-spacing:.2em}
 .slide__promo .eyebrow::before{display:none}
 .slide__wave{bottom:5%}
+.promo-card .slide__wave{bottom:1.5%}

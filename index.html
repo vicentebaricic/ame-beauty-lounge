@@ -793,26 +793,13 @@ textarea.input{min-height:96px;resize:vertical}
 .hero__meta .stars{color:#F7D3DE}
 
 /* ============================================================
-   DESTACADOS — carrusel bajo el hero (reemplaza al split de 2 fotos)
+   PROMOCIÓN DEL MES — tarjeta destacada entre "Nosotros" y "Servicios"
    ============================================================ */
-.feature{padding:var(--sp-3) 0 0}
-@media (min-width:700px){ .feature{padding:var(--sp-5) 0 0} }
-.carousel--feature{padding-inline:var(--sp-3)}
-@media (min-width:700px){ .carousel--feature{padding-inline:clamp(1.25rem, 3vw, 3.5rem)} }
-.carousel--feature .carousel__track{grid-auto-columns:86%;column-gap:var(--sp-3);scroll-padding-inline:0;padding-bottom:0}
-@media (min-width:700px){ .carousel--feature .carousel__track{grid-auto-columns:calc((100% - var(--sp-5)) / 2);column-gap:var(--sp-5)} }
-@media (min-width:1200px){ .carousel--feature .carousel__track{grid-auto-columns:calc((100% - 2 * var(--sp-5)) / 3)} }
-.carousel--feature .carousel__btn--prev{left:calc(var(--sp-3) + 8px)}
-.carousel--feature .carousel__btn--next{right:calc(var(--sp-3) + 8px)}
-@media (min-width:700px){
-  .carousel--feature .carousel__btn--prev{left:calc(clamp(1.25rem, 3vw, 3.5rem) - 22px)}
-  .carousel--feature .carousel__btn--next{right:calc(clamp(1.25rem, 3vw, 3.5rem) - 22px)}
-}
+.promo-sec{padding:0 0 var(--sp-8)}
+@media (min-width:900px){ .promo-sec{padding-bottom:var(--sp-9)} }
+.slide.promo-card{width:min(100% - 1.5rem, var(--container));margin-inline:auto;aspect-ratio:auto;min-height:clamp(460px, 42vw, 540px)}
+@media (min-width:900px){ .promo-card .slide__promo{max-width:34ch} .promo-card .slide__promo h2{font-size:clamp(2.6rem, 1.6rem + 2vw, 3.6rem)} .promo-card .slide__sprig{right:8%;width:150px} }
 .slide{position:relative;scroll-snap-align:start;aspect-ratio:4/5;border-radius:var(--radius-l);overflow:hidden;background:var(--c-surface)}
-.slide__link{position:absolute;inset:0;display:block;color:#FDF8F6;text-decoration:none}
-.slide .ph{position:absolute;inset:0}
-.slide img{transition:transform 1.2s var(--ease-out)}
-.slide:hover img{transform:scale(1.03)}
 .slide--promo{display:grid;place-items:center;padding:var(--sp-6);text-align:center;
   background:radial-gradient(70% 60% at 85% 95%, rgba(226,170,170,.45), transparent 70%),
              radial-gradient(60% 50% at 10% 5%, rgba(255,255,255,.7), transparent 70%), #F8ECE3;color:#3B2A31}
@@ -850,6 +837,7 @@ textarea.input{min-height:96px;resize:vertical}
 .slide__promo .eyebrow{letter-spacing:.2em}
 .slide__promo .eyebrow::before{display:none}
 .slide__wave{bottom:5%}
+.promo-card .slide__wave{bottom:1.5%}
 </style>
 </head>
 <body class="page-home">
@@ -933,44 +921,17 @@ textarea.input{min-height:96px;resize:vertical}
     </div>
   </div>
 </section>
-<!-- =================== DESTACADOS (carrusel) =================== -->
-<section class="feature" aria-label="Destacados">
-  <div class="carousel carousel--feature reveal" role="region" aria-roledescription="carrusel" aria-label="Destacados de Âme">
-    <ul class="carousel__track" tabindex="0">
-      <li class="slide slide--promo">
-        <svg class="sprig slide__sprig sprig--tr" viewBox="0 0 170 200" aria-hidden="true"><path d="M152 6C126 52 98 104 58 196"/><path d="M135 37C120 22 105 19 92 23C104 33 118 39 135 37Z"/><path d="M135 37C120 30 105 26 92 23"/><path d="M127 53C140 42 153 40 162 44C154 54 141 57 127 53Z"/><path d="M127 53C139 49 151 46 162 44"/><path d="M112 80C96 68 82 67 70 73C84 83 98 86 112 80Z"/><path d="M112 80C98 76 84 74 70 73"/><path d="M103 98C117 88 131 88 142 94C132 103 118 105 103 98Z"/><path d="M103 98C116 95 129 94 142 94"/><path d="M87 127C71 117 57 118 46 125C59 134 74 135 87 127Z"/><path d="M87 127C73 124 59 124 46 125"/><path d="M79 144C93 135 107 136 117 142C107 150 93 151 79 144Z"/><path d="M79 144C92 142 104 141 117 142"/></svg>
-        <div class="slide__promo">
-          <p class="eyebrow">Promoción del mes</p>
-          <h2>Manicure + pedicure <em>con esmaltado permanente</em></h2>
-          <p class="slide__note">Un solo color, manos y pies en una misma visita.</p>
-          <a class="btn btn--accent js-book" href="#" target="_blank" rel="noopener">Reservar promo</a>
-          <a class="link" href="servicios.html#promociones">Ver todas las promociones →</a>
-        </div>
-        <svg class="wave slide__wave" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true"><path d="M0 44C240 8 480 72 760 46S1200 4 1440 30"/></svg>
-      </li>
-      <li class="slide"><a class="slide__link" href="#salon">
-        <div class="ph" data-file="assets/img/destacado-salon.webp"><img src="assets/img/destacado-salon.webp" alt="Interior del salón con espejos redondos y luz cálida" loading="lazy" width="900" height="1125"></div>
-        <div class="split__cap"><h2>Conoce el salón</h2><span>Los Ingleses 186, Chicureo</span></div>
-      </a></li>
-      <li class="slide slide--post"><a class="slide__link js-ig" href="#" target="_blank" rel="noopener" aria-label="Ver en Instagram: Peluquería, spa de manos y pies, pestañas, cejas, estética y depilación">
-        <div class="ph" data-file="assets/img/instagram/post-01.webp"><img src="assets/img/instagram/post-01.webp" alt="Peluquería, spa de manos y pies, pestañas, cejas, estética y depilación" loading="lazy" width="720" height="900"></div>
-      </a></li>
-      <li class="slide"><a class="slide__link" href="servicios.html#cabello">
-        <div class="ph" data-file="assets/img/destacado-brushing.webp"><img src="assets/img/destacado-brushing.webp" alt="Brushing con cepillo redondo y secador" loading="lazy" width="900" height="1125"></div>
-        <div class="split__cap"><h2>Brushing, ondas y peinados</h2><span>Ver servicios de cabello</span></div>
-      </a></li>
-      <li class="slide slide--post"><a class="slide__link js-ig" href="#" target="_blank" rel="noopener" aria-label="Ver en Instagram: Logo de Âme Beauty Lounge">
-        <div class="ph" data-file="assets/img/instagram/post-02.webp"><img src="assets/img/instagram/post-02.webp" alt="Logo de Âme Beauty Lounge" loading="lazy" width="720" height="900"></div>
-      </a></li>
-      <li class="slide"><a class="slide__link" href="servicios.html#belleza">
-        <div class="ph" data-file="assets/img/destacado-manos.webp"><img src="assets/img/destacado-manos.webp" alt="Manicure con esmaltado permanente" loading="lazy" width="900" height="1125"></div>
-        <div class="split__cap"><h2>Manos y pies impecables</h2><span>Ver servicios de belleza</span></div>
-      </a></li>
-    </ul>
-    <button class="carousel__btn carousel__btn--prev" type="button" aria-label="Destacado anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button>
-    <button class="carousel__btn carousel__btn--next" type="button" aria-label="Siguiente destacado"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>
-  </div>
-</section>
+<!-- =================== SPLIT EDITORIAL =================== -->
+<div class="split" aria-label="Destacados">
+  <a class="split__item reveal" href="servicios.html#cabello">
+    <div class="ph" data-file="assets/img/destacado-brushing.webp"><img src="assets/img/destacado-brushing.webp" alt="Brushing con cepillo redondo y secador" loading="lazy" width="900" height="1125"></div>
+    <div class="split__cap"><h2>Brushing, ondas y peinados</h2><span>Ver servicios de cabello</span></div>
+  </a>
+  <a class="split__item reveal" data-delay="1" href="servicios.html#belleza">
+    <div class="ph" data-file="assets/img/destacado-manos.webp"><img src="assets/img/destacado-manos.webp" alt="Manicure con esmaltado permanente" loading="lazy" width="900" height="1125"></div>
+    <div class="split__cap"><h2>Manos y pies impecables</h2><span>Ver servicios de belleza</span></div>
+  </a>
+</div>
 <!-- =================== NOSOTROS =================== -->
 <section class="section has-sprig" id="nosotros" aria-labelledby="about-title">
   <svg class="sprig sprig--tr" viewBox="0 0 170 200" aria-hidden="true"><path d="M152 6C126 52 98 104 58 196"/><path d="M135 37C120 22 105 19 92 23C104 33 118 39 135 37Z"/><path d="M135 37C120 30 105 26 92 23"/><path d="M127 53C140 42 153 40 162 44C154 54 141 57 127 53Z"/><path d="M127 53C139 49 151 46 162 44"/><path d="M112 80C96 68 82 67 70 73C84 83 98 86 112 80Z"/><path d="M112 80C98 76 84 74 70 73"/><path d="M103 98C117 88 131 88 142 94C132 103 118 105 103 98Z"/><path d="M103 98C116 95 129 94 142 94"/><path d="M87 127C71 117 57 118 46 125C59 134 74 135 87 127Z"/><path d="M87 127C73 124 59 124 46 125"/><path d="M79 144C93 135 107 136 117 142C107 150 93 151 79 144Z"/><path d="M79 144C92 142 104 141 117 142"/></svg>
@@ -993,13 +954,20 @@ textarea.input{min-height:96px;resize:vertical}
     </div>
   </div>
 </section>
-<!-- =================== BANDA PROMOCIONES =================== -->
-<div class="band">
-  <div class="container">
-    <p>Promociones del mes: combos de manos, cabello y mirada para ahorrar tiempo y dinero.</p>
-    <a href="servicios.html#promociones">Ver promociones →</a>
-  </div>
-</div>
+<!-- =================== PROMOCIÓN DEL MES =================== -->
+<section class="promo-sec" aria-label="Promoción del mes">
+  <div class="slide slide--promo promo-card reveal">
+        <svg class="sprig slide__sprig sprig--tr" viewBox="0 0 170 200" aria-hidden="true"><path d="M152 6C126 52 98 104 58 196"/><path d="M135 37C120 22 105 19 92 23C104 33 118 39 135 37Z"/><path d="M135 37C120 30 105 26 92 23"/><path d="M127 53C140 42 153 40 162 44C154 54 141 57 127 53Z"/><path d="M127 53C139 49 151 46 162 44"/><path d="M112 80C96 68 82 67 70 73C84 83 98 86 112 80Z"/><path d="M112 80C98 76 84 74 70 73"/><path d="M103 98C117 88 131 88 142 94C132 103 118 105 103 98Z"/><path d="M103 98C116 95 129 94 142 94"/><path d="M87 127C71 117 57 118 46 125C59 134 74 135 87 127Z"/><path d="M87 127C73 124 59 124 46 125"/><path d="M79 144C93 135 107 136 117 142C107 150 93 151 79 144Z"/><path d="M79 144C92 142 104 141 117 142"/></svg>
+        <div class="slide__promo">
+          <p class="eyebrow">Promoción del mes</p>
+          <h2>Manicure + pedicure <em>con esmaltado permanente</em></h2>
+          <p class="slide__note">Un solo color, manos y pies en una misma visita.</p>
+          <a class="btn btn--accent js-book" href="#" target="_blank" rel="noopener">Reservar promo</a>
+          <a class="link" href="servicios.html#promociones">Ver todas las promociones →</a>
+        </div>
+        <svg class="wave slide__wave" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true"><path d="M0 44C240 8 480 72 760 46S1200 4 1440 30"/></svg>
+      </div>
+</section>
 <!-- =================== SERVICIOS =================== -->
 <section class="section section--alt" id="servicios" aria-labelledby="svc-title">
   <svg class="sprig sprig--bl" viewBox="0 0 170 200" aria-hidden="true"><path d="M152 6C126 52 98 104 58 196"/><path d="M135 37C120 22 105 19 92 23C104 33 118 39 135 37Z"/><path d="M135 37C120 30 105 26 92 23"/><path d="M127 53C140 42 153 40 162 44C154 54 141 57 127 53Z"/><path d="M127 53C139 49 151 46 162 44"/><path d="M112 80C96 68 82 67 70 73C84 83 98 86 112 80Z"/><path d="M112 80C98 76 84 74 70 73"/><path d="M103 98C117 88 131 88 142 94C132 103 118 105 103 98Z"/><path d="M103 98C116 95 129 94 142 94"/><path d="M87 127C71 117 57 118 46 125C59 134 74 135 87 127Z"/><path d="M87 127C73 124 59 124 46 125"/><path d="M79 144C93 135 107 136 117 142C107 150 93 151 79 144Z"/><path d="M79 144C92 142 104 141 117 142"/></svg>
@@ -1739,7 +1707,7 @@ function initSamples(){
    ============================================================ */
 // Cada bloque corre solo si su sección existe en la página actual
 const run = (sel, fn) => { if (!sel || $(sel)) fn(); };
-run("#gallery", renderGallery); run("#team", renderTeam); run("#reviews", renderReviews); run(".carousel--feature", () => initCarousel($(".carousel--feature"))); run("#svcList", renderServices); run("#hoursBody", renderHours);
+run("#gallery", renderGallery); run("#team", renderTeam); run("#reviews", renderReviews); run("#svcList", renderServices); run("#hoursBody", renderHours);
 wireLinks(); watchMedia();
 run(null, initHeader); run(null, initTheme); run("#mnav", initMenu); run("#heroVideo", initHero);
 run("#gallery", initGallery); run(".map", initMap); run("#booking", initBooking); run(".ig-video", initIgVideo); run(null, initReveal); run("#toggleSamples", initSamples);

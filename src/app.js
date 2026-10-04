@@ -490,7 +490,7 @@ function initSamples(){
    ============================================================ */
 // Cada bloque corre solo si su sección existe en la página actual
 const run = (sel, fn) => { if (!sel || $(sel)) fn(); };
-run("#gallery", renderGallery); run("#team", renderTeam); run("#reviews", renderReviews); run(".carousel--feature", () => initCarousel($(".carousel--feature"))); run("#svcList", renderServices); run("#hoursBody", renderHours);
+run("#gallery", renderGallery); run("#team", renderTeam); run("#reviews", renderReviews); run("#svcList", renderServices); run("#hoursBody", renderHours);
 wireLinks(); watchMedia();
 run(null, initHeader); run(null, initTheme); run("#mnav", initMenu); run("#heroVideo", initHero);
 run("#gallery", initGallery); run(".map", initMap); run("#booking", initBooking); run(".ig-video", initIgVideo); run(null, initReveal); run("#toggleSamples", initSamples);
