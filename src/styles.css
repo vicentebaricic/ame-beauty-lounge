@@ -3,33 +3,34 @@
    ============================================================ */
 :root{
   /* Paleta pastel 70 / 15 / 10 / 5 */
-  --c-bg:        #FDF8F6;   /* 70% perla rosada */
-  --c-surface:   #F6E8E8;   /* 15% rosa pastel */
+  --c-bg:        #FBF5EF;   /* 70% crema (papel de los posts de apertura) */
+  --c-surface:   #F4E4DC;   /* 15% rubor durazno (acuarela) */
   --c-ink:       #3B2A31;   /* 10% ciruela profundo */
   --c-accent:    #A9566F;   /* 5%  rosa empolvado (botones) — 4.9:1 con blanco */
   --c-accent-ink:#8E4258;   /* rosa para texto sobre claro (AA) */
   --c-on-accent: #FFFFFF;
-  --c-lilac:     #EEE7F4;   /* tinte lavanda para variar fondos */
+  --c-lilac:     #F8ECE3;   /* crema rosada para variar fondos */
+  --c-gold:      #C8A46A;   /* SOLO líneas finas y ramitas decorativas, nunca texto */
 
   --c-text:      var(--c-ink);
-  --c-muted:     #6B5860;
-  --c-line:      #EBD8D6;
+  --c-muted:     #6E5A5C;
+  --c-line:      #EAD8CD;
   --c-card:      #FFFFFF;
   --c-overlay:   rgba(43,24,33,.55);
   --c-sample-bg: #FFF1C9;
   --c-sample-tx: #6B4E00;
 
-  /* Tipografía: Bodoni Moda (titulares, alto contraste) + Jost (geométrica, como el logo) */
-  --font-display: "Bodoni Moda", "Didot", Georgia, serif;
-  --font-body: "Jost", "Futura", system-ui, -apple-system, "Segoe UI", sans-serif;
+  /* Tipografía: Instrument Serif (titulares, editorial) + Figtree (texto, limpia y cálida) */
+  --font-display: "Instrument Serif", "Iowan Old Style", Georgia, serif;
+  --font-body: "Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
 
   --fs-xs: .8125rem;
   --fs-sm: .9375rem;
   --fs-md: 1.0625rem;
   --fs-lg: 1.25rem;
   --fs-xl: clamp(1.6rem, 1.2rem + 1.6vw, 2.25rem);
-  --fs-2xl: clamp(2.1rem, 1.4rem + 3vw, 3.6rem);
-  --fs-hero: clamp(2.7rem, 1.2rem + 6.4vw, 6.4rem);
+  --fs-2xl: clamp(2.4rem, 1.6rem + 3.2vw, 4.1rem);
+  --fs-hero: clamp(3.1rem, 1.4rem + 7vw, 7.6rem);
 
   --sp-1: .25rem; --sp-2: .5rem; --sp-3: .75rem; --sp-4: 1rem;
   --sp-5: 1.5rem; --sp-6: 2rem; --sp-7: 3rem; --sp-8: 4.5rem; --sp-9: 7rem;
@@ -50,7 +51,7 @@
 }
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
-    --c-bg:#1E1719; --c-surface:#2A2023; --c-ink:#F7ECEF; --c-lilac:#28232F;
+    --c-bg:#1E1719; --c-surface:#2A2023; --c-ink:#F7ECEF; --c-lilac:#2B2224; --c-gold:#B8975F;
     --c-accent:#E8A6B8; --c-accent-ink:#F2BFCC; --c-on-accent:#1E1719;
     --c-text:#F7ECEF; --c-muted:#C2AEB5; --c-line:#3F3236; --c-card:#2F2427;
     --c-overlay:rgba(10,6,8,.62); --c-sample-bg:#4A3A10; --c-sample-tx:#FFE29A;
@@ -60,7 +61,7 @@
   }
 }
 :root[data-theme="dark"]{
-  --c-bg:#1E1719; --c-surface:#2A2023; --c-ink:#F7ECEF; --c-lilac:#28232F;
+  --c-bg:#1E1719; --c-surface:#2A2023; --c-ink:#F7ECEF; --c-lilac:#2B2224; --c-gold:#B8975F;
   --c-accent:#E8A6B8; --c-accent-ink:#F2BFCC; --c-on-accent:#1E1719;
   --c-text:#F7ECEF; --c-muted:#C2AEB5; --c-line:#3F3236; --c-card:#2F2427;
   --c-overlay:rgba(10,6,8,.62); --c-sample-bg:#4A3A10; --c-sample-tx:#FFE29A;
@@ -85,8 +86,7 @@ img,video{display:block;max-width:100%}
 img{height:auto}
 a{color:inherit}
 button,input,select,textarea{font:inherit;color:inherit}
-h1,h2,h3,h4{font-family:var(--font-display);font-weight:500;line-height:1.08;margin:0;letter-spacing:-.005em;text-wrap:balance}
-h1 em,h2 em,h3 em{font-weight:400}
+h1,h2,h3,h4{font-family:var(--font-display);font-weight:400;line-height:1.04;margin:0;letter-spacing:-.01em;text-wrap:balance}
 p{margin:0 0 var(--sp-4)}
 [id]{scroll-margin-top:calc(var(--header-h) + 12px)}
 :focus-visible{outline:3px solid var(--c-accent);outline-offset:3px;border-radius:4px}
@@ -100,10 +100,10 @@ p{margin:0 0 var(--sp-4)}
 .section--alt{background:var(--c-surface)}
 .eyebrow{
   display:inline-flex;align-items:center;gap:var(--sp-3);
-  font-size:var(--fs-xs);font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--c-accent-ink);
+  font-size:var(--fs-xs);font-weight:600;letter-spacing:.28em;text-transform:uppercase;color:var(--c-accent-ink);
   margin-bottom:var(--sp-4);
 }
-.eyebrow::before{content:"";width:28px;height:1px;background:currentColor}
+.eyebrow::before{content:"";width:40px;height:1px;background:var(--c-gold)}
 .h2{font-size:var(--fs-2xl)}
 .h2 em{font-style:italic;color:var(--c-accent-ink)}
 .lead{font-size:var(--fs-lg);color:var(--c-muted);max-width:56ch}
@@ -732,3 +732,35 @@ textarea.input{min-height:96px;resize:vertical}
 .svc-rows__go:hover{text-decoration:underline}
 /* El WhatsApp flotante no tapa la fila inferior del hero */
 @media (min-width: 900px){ .hero .hero__row{padding-right:88px} }
+
+/* ============================================================
+   DETALLES DE MARCA (inspirados en los posts de apertura):
+   acuarela rubor, líneas doradas finas y ramitas de línea
+   ============================================================ */
+.section--alt,.section--lilac{position:relative;isolation:isolate}
+.section--alt::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:radial-gradient(60% 50% at 92% 8%, rgba(255,255,255,.55), transparent 70%),
+             radial-gradient(45% 55% at 4% 96%, rgba(226,170,170,.28), transparent 70%)}
+:root[data-theme="dark"] .section--alt::before{opacity:.15}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .section--alt::before{opacity:.15} }
+.sprig{position:absolute;width:clamp(90px, 12vw, 170px);height:auto;color:var(--c-gold);pointer-events:none;opacity:.9}
+.sprig path{fill:none;stroke:currentColor;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.sprig--tr{top:var(--sp-5);right:clamp(.5rem, 3vw, 3rem)}
+.sprig--bl{bottom:var(--sp-5);left:clamp(.5rem, 3vw, 3rem);transform:scaleX(-1) rotate(160deg)}
+.has-sprig{position:relative}
+.wave{display:block;width:100%;height:clamp(40px, 6vw, 80px);color:var(--c-gold);pointer-events:none}
+.wave path{fill:none;stroke:currentColor;stroke-width:1;vector-effect:non-scaling-stroke}
+.footer{padding-top:var(--sp-5)}
+.wave--footer{margin-bottom:var(--sp-6)}
+@media (max-width:699px){ .sprig{width:80px;opacity:.7} }
+
+/* Instagram: los posts ya traen su diseño, sin título ni degradado encima */
+.ig__post--real::after{display:none}
+.ig__post--real .ig__icon{color:#8E6A3C}
+
+/* Reseñas reales: sin fecha (AgendaPro muestra fechas relativas) */
+.review__top{align-items:center}
+.review .stars svg.is-empty{opacity:.25}
+.rev-score .stars{color:#D9A441}
+.review .stars{color:#D9A441}
+.hero__meta .stars{color:#F7D3DE}

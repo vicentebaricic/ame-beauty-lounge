@@ -18,6 +18,8 @@ generadas desde `src/` y publicadas en GitHub Pages.
 | Textos de la portada | `src/pages/index.html` |
 | Colores y tipografía | `src/styles.css` (tokens al inicio) |
 
+Fotos: los originales van en `Media/`; `python3 tools/build_media.py` genera los recortes de `assets/img/`.
+
 Después de editar, regenerar las páginas: `python3 tools/build_pages.py`
 (arma `index.html` y `servicios.html` autocontenidos en la raíz).
 
@@ -30,12 +32,11 @@ Lo marcado con la etiqueta amarilla en la página es contenido de ejemplo
 
 | Qué | Archivo esperado |
 |---|---|
-| Fotos del local | `assets/img/nosotros-01.webp` (4:5), `nosotros-02.webp` (3:4), `assets/img/espacio/salon-main.webp` |
-| Foto de manos para el destacado | `assets/img/destacado-manos.webp` (4:5) |
-| Fotos de los mundos de servicios | `assets/img/servicios/home-belleza.webp`, `home-bienestar.webp` (4:5) y `belleza-wide.webp`, `bienestar-wide.webp` (5:2) |
-| Posts de Instagram | `assets/img/instagram/post-01.webp`, `post-03.webp` (4:5) |
-| Galería | `assets/img/galeria/*.webp` (nombres en `GALLERY`) |
+| Foto del salón (interior real) | `assets/img/espacio/salon-main.webp` (4:3, horizontal) |
+| Tercer post de Instagram ("Una nueva experiencia…") | `Media/ig-post-experiencia.webp` y luego `python3 tools/build_media.py` |
 | Fotos del equipo en buena resolución | `assets/img/team/<nombre-apellido>.jpg` (cuadradas, ≥ 600 px) |
+| Usuario de Instagram | `src/app.js` → `CONFIG.instagram` |
+| Horario real | `src/app.js` → `CONFIG.hours` |
 | Imagen del mapa (opcional) | `assets/img/espacio/mapa.webp` |
 
 ## Publicación

@@ -6,6 +6,7 @@ const CONFIG = {
   whatsapp: "56956100642",
   agendapro: "https://ameblounge.site.agendapro.com/cl/sucursal/25770",
   bookingInline: true,   // false = los botones "Reservar" abren AgendaPro en pestaña nueva
+  reviews:   "https://link.agendapro.com/cl/ameblounge/49b17017/reviews/81e643b9-484a-4381-9655-ee2e82c45046",
   instagram: "https://www.instagram.com/",   // TODO: reemplazar por el perfil real (p. ej. https://www.instagram.com/usuario/)
   mapEmbed: "https://www.google.com/maps?q=Los%20Ingleses%20186%2C%20Chicureo%2C%20Colina%2C%20Chile&z=16&output=embed",
   // Mensajes de WhatsApp pre-armados según la sección del clic
@@ -32,7 +33,8 @@ const CONFIG = {
 };
 
 /* Servicios — las 16 categorías de AgendaPro, en su mismo orden, agrupadas en mundos.
-   Los 3 servicios de cada categoría son REFERENCIALES: reemplazar por los reales. Agregar servicios = agregar filas. */
+   Manicure, pestañas y cejas, masajes, depilación de rostro y la promo mani+pedi usan nombres reales
+   (tomados de las reseñas de AgendaPro); el resto son REFERENCIALES: reemplazar por los reales. Agregar servicios = agregar filas. */
 const SERVICES = [
   { id: "cabello", name: "Cabello", img: "cabello-wide.webp",
     intro: "Color, corte, alisado y cuidado pensados para tu tipo de cabello.",
@@ -47,11 +49,11 @@ const SERVICES = [
   { id: "belleza", name: "Belleza", img: "belleza-wide.webp",
     intro: "Manos, pies y mirada. Detalles que se notan, con herramientas esterilizadas.",
     groups: [
-      { id: "manicure-femenina", name: "Manicure femenina", items: ["Esmaltado permanente", "Soft gel", "Polygel"] },
-      { id: "pedicure-femenina", name: "Pedicure femenina", items: ["Pedicure spa", "Esmaltado permanente en pies", "Tratamiento de durezas"] },
+      { id: "manicure-femenina", name: "Manicure femenina", items: ["Manicure con esmaltado permanente 1 color", "Manicure permanente con refuerzo simple", "Manicure con esmaltado permanente y refuerzo rubber 1 color", "Uñas Softgel con esmaltado permanente 1 color", "Extensión de uñas Polygel con esmaltado permanente 1 color"] },
+      { id: "pedicure-femenina", name: "Pedicure femenina", items: ["Pedicure tradicional sin esmaltado", "Pedicure con esmaltado permanente", "Pedicure spa"] },
       { id: "spa-kids", name: "Spa kids", items: ["Mani kids", "Pedi kids", "Peinado kids"] },
       { id: "masculina", name: "Manicure y pedicure masculina", items: ["Manicure masculina", "Pedicure masculina", "Combo mani + pedi"] },
-      { id: "pestanas-cejas", name: "Pestañas y cejas", items: ["Lifting de pestañas", "Extensiones de pestañas", "Laminado de cejas"] },
+      { id: "pestanas-cejas", name: "Pestañas y cejas", items: ["Lifting de pestañas con tinte", "Extensión de pestañas volumen (2D-3D-4D-5D)", "Laminado de cejas con tinte"] },
       { id: "depilacion-femenina", name: "Depilación femenina", items: ["Rostro completo", "Axilas y piernas", "Rebaje"] },
       { id: "depilacion-masculina", name: "Depilación masculina", items: ["Espalda", "Pecho y abdomen", "Cejas y rostro"] }
     ] },
@@ -59,23 +61,36 @@ const SERVICES = [
     intro: "Una pausa real en tu semana: cuidado de la piel y masajes.",
     groups: [
       { id: "faciales", name: "Tratamientos faciales", items: ["Limpieza facial profunda", "Hidratación facial", "Dermaplaning"] },
-      { id: "masajes", name: "Masajes corporales", items: ["Masaje relajante", "Masaje descontracturante", "Drenaje linfático"] }
+      { id: "masajes", name: "Masajes corporales", items: ["Masaje mixto descontracturante + relajante (45 min)", "Masaje relajante", "Masaje descontracturante"] }
     ] },
   { id: "promociones", name: "Promociones", promo: true,
     intro: "Combos pensados para ahorrar tiempo y dinero. Revisa las vigentes en la agenda.",
     groups: [
-      { id: "promos", name: "Promociones del mes", items: ["Mani + pedi permanente", "Corte + tratamiento capilar", "Lifting + laminado de cejas"] }
+      { id: "promos", name: "Promociones del mes", items: ["Promo manicure y pedicure esmaltado permanente 1 color", "Corte + tratamiento capilar", "Lifting + laminado de cejas"] }
     ] }
+];
+
+/* Reseñas reales de AgendaPro (4,8 · 54 reseñas). Solo las que tienen comentario. */
+const REVIEWS = [
+  { name: "Isabel",    stars: 5, service: "Extensión uñas Polygel con esmaltado permanente", text: "Excelente experiencia en Ame Beauty. Hacen las uñas fenomenal, con muchísimo cuidado y atención al detalle, y el servicio es siempre muy profesional y agradable. Además, valoro especialmente que todo está perfectamente esterilizado y los materiales utilizados son individuales para cada cliente, algo que da muchísima confianza. ¡Muy recomendable!" },
+  { name: "Antonia",   stars: 5, service: "Uñas Softgel con esmaltado permanente", text: "Me encantó el trabajo de Paz con mis uñas que me las mordí, no tuvo problemas y me las dejó perfectas! También la experiencia como clienta en el salón fui súper bien recibida, acogida, conversamos, valoré cada detalle tanto de Paz como del equipo. El café, galletas y hasta me dieron un regalito!" },
+  { name: "Paz",       stars: 5, service: "Pedicure tradicional sin esmaltado", text: "Excelente servicio, el lugar súper cómodo y acogedor. La chica muy cuidadosa, amable, delicada y simpática. Quedé encantada con el servicio de pedicure; fue un ratito súper relajante, ¡sin duda volveré!" },
+  { name: "Mara",      stars: 5, service: "Lifting de pestañas con tinte", text: "Servicio excelente y muy amorosas todas las niñas. Definitivamente voy a volver, quedé muy conforme." },
+  { name: "Virginia",  stars: 5, service: "Extensión de pestañas volumen", text: "Muy buena atención y muy lindo y acogedor el nuevo local!" },
+  { name: "Ángeles",   stars: 5, service: "Masaje mixto descontracturante + relajante", text: "Excelentes masajes!" },
+  { name: "Bárbara",   stars: 5, service: "Manicure con esmaltado permanente", text: "Excelente servicio, muy simpáticas todas, feliz con mi esmaltado." },
+  { name: "Yoeni",     stars: 5, service: "Manicure con esmaltado permanente", text: "Las uñitas me quedaron bellísimas." },
+  { name: "Vicky",     stars: 4, service: "Promo manicure y pedicure esmaltado permanente", text: "Muy buenos trabajos, recomendado." }
 ];
 
 /* Galería — reemplaza con fotos reales (assets/img/galeria/) */
 const GALLERY = [
-  { home: true, file: "unas-01.webp",     cat: "unas",    cap: "Esmaltado permanente" },
-  { home: true, file: "color-01.webp",    cat: "color",   cap: "Balayage luminoso" },
-  { home: true, file: "pestanas-01.webp", cat: "rostro",  cap: "Lifting de pestañas" },
-  { home: true, file: "corte-01.webp",    cat: "corte",   cap: "Corte y brushing" },
-  { home: true, file: "unas-02.webp",     cat: "unas",    cap: "Nail art" },
-  { home: true, file: "cejas-01.webp",    cat: "rostro",  cap: "Laminado de cejas" }
+  { home: true, file: "unas-01.webp",     cat: "unas",   cap: "Manicure de precisión" },
+  { home: true, file: "color-01.webp",    cat: "color",  cap: "Color con pincel y papel" },
+  { home: true, file: "rostro-01.webp",   cat: "rostro", cap: "Limpieza facial" },
+  { home: true, file: "ondas-01.webp",    cat: "cabello",cap: "Ondas con tenaza" },
+  { home: true, file: "color-02.webp",    cat: "color",  cap: "Color luminoso" },
+  { home: true, file: "brushing-01.webp", cat: "cabello",cap: "Brushing con cepillo redondo" }
 ];
 
 /* Equipo — nombres reales; roles y bios por confirmar. Fotos: assets/img/team/<nombre-apellido>.jpg */
@@ -98,6 +113,7 @@ const store = {
   get(k, d){ try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch { return d; } },
   set(k, v){ try { localStorage.setItem(k, JSON.stringify(v)); } catch {} }
 };
+const STAR = '<svg viewBox="0 0 20 20" fill="currentColor" width="16" height="16" aria-hidden="true"><path d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.9L10 15l-5.2 2.7 1-5.9L1.5 7.7l5.9-.8z"/></svg>';
 const sampleBadge = (txt = "Contenido de ejemplo") => `<span class="sample">${txt}</span>`;
 const imgBox = (src, alt, cls = "", attrs = "") =>
   `<div class="ph ${cls}" data-file="${esc(src)}" ${attrs}><img src="${esc(src)}" alt="${esc(alt)}" loading="lazy" decoding="async"></div>`;
@@ -123,6 +139,7 @@ function watchMedia(root = document){
    ============================================================ */
 function wireLinks(root = document){
   $$(".js-book", root).forEach(a => a.href = CONFIG.agendapro);
+  $$(".js-reviews", root).forEach(a => a.href = CONFIG.reviews);
   $$(".js-ig", root).forEach(a => a.href = CONFIG.instagram);
   $$(".js-wa", root).forEach(a => {
     const key = a.dataset.wa || "default";
@@ -221,6 +238,49 @@ function renderServices(){
     empty.hidden = total > 0;
     $("#svcCount").textContent = q ? `${total} ${total === 1 ? "servicio" : "servicios"}` : "";
   });
+}
+
+function renderReviews(){
+  $("#reviews").innerHTML = REVIEWS.map((r, i) => `
+    <li class="review" aria-roledescription="reseña" aria-label="${i + 1} de ${REVIEWS.length}">
+      <div class="review__top"><b>${esc(r.name)}</b></div>
+      <span class="stars" role="img" aria-label="${r.stars} de 5 estrellas">${STAR.repeat(r.stars)}${STAR.replace("<svg", '<svg class="is-empty"').repeat(5 - r.stars)}</span>
+      <p class="review__text">${esc(r.text)}</p>
+      <button class="review__more" type="button" hidden>Leer más</button>
+      <div class="review__foot"><span>${esc(r.service)}</span></div>
+    </li>`).join("");
+  initCarousel($("#reviews").closest(".carousel"));
+}
+
+// Carrusel horizontal: flechas, arrastre/scroll nativo con snap y "Leer más" en textos largos
+function initCarousel(root){
+  const track = $(".carousel__track", root), prev = $(".carousel__btn--prev", root), next = $(".carousel__btn--next", root);
+  const step = () => { const c = track.firstElementChild; return c ? c.getBoundingClientRect().width + parseFloat(getComputedStyle(track).columnGap || 0) : 300; };
+  const sync = () => {
+    prev.disabled = track.scrollLeft <= 4;
+    next.disabled = track.scrollLeft + track.clientWidth >= track.scrollWidth - 4;
+  };
+  prev.addEventListener("click", () => track.scrollBy({ left: -step(), behavior: "smooth" }));
+  next.addEventListener("click", () => track.scrollBy({ left: step(), behavior: "smooth" }));
+  track.addEventListener("keydown", e => {
+    if (e.key === "ArrowRight") { e.preventDefault(); next.click(); }
+    if (e.key === "ArrowLeft")  { e.preventDefault(); prev.click(); }
+  });
+  track.addEventListener("scroll", () => requestAnimationFrame(sync), { passive: true });
+  window.addEventListener("resize", sync);
+  // "Leer más" solo donde el texto quedó cortado
+  const clampCheck = () => $$(".review", track).forEach(card => {
+    const t = $(".review__text", card), b = $(".review__more", card);
+    if (card.classList.contains("is-open")) return;
+    b.hidden = t.scrollHeight <= t.clientHeight + 2;
+  });
+  track.addEventListener("click", e => {
+    const b = e.target.closest(".review__more"); if (!b) return;
+    const card = b.closest(".review"), open = card.classList.toggle("is-open");
+    b.textContent = open ? "Leer menos" : "Leer más";
+  });
+  sync(); clampCheck(); window.addEventListener("resize", clampCheck);
+  document.fonts && document.fonts.ready.then(() => { sync(); clampCheck(); });
 }
 
 function renderHours(){
@@ -443,7 +503,7 @@ function initSamples(){
    ============================================================ */
 // Cada bloque corre solo si su sección existe en la página actual
 const run = (sel, fn) => { if (!sel || $(sel)) fn(); };
-run("#gallery", renderGallery); run("#team", renderTeam); run("#svcList", renderServices); run("#hoursBody", renderHours);
+run("#gallery", renderGallery); run("#team", renderTeam); run("#reviews", renderReviews); run("#svcList", renderServices); run("#hoursBody", renderHours);
 wireLinks(); watchMedia();
 run(null, initHeader); run(null, initTheme); run("#mnav", initMenu); run("#heroVideo", initHero);
 run("#gallery", initGallery); run(".map", initMap); run("#booking", initBooking); run(".ig-video", initIgVideo); run(null, initReveal); run("#toggleSamples", initSamples);
