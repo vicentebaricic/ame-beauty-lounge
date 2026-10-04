@@ -1,0 +1,66 @@
+<!-- =================== FOOTER =================== -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div>
+        <span class="brand"><span class="logo" role="img" aria-label="Âme Beauty Lounge"></span></span>
+        <p class="muted" style="margin-top:var(--sp-4);max-width:36ch">Beauty lounge en Chicureo. Cabello, manos, mirada, piel y bienestar con atención personalizada.</p>
+      </div>
+      <div>
+        <h3>Explora</h3>
+        <ul><li><a href="servicios.html">Servicios</a></li><li><a href="{{home}}#trabajos">Trabajos</a></li><li><a href="{{home}}#salon">El salón</a></li><li><a href="{{home}}#equipo">Equipo</a></li></ul>
+      </div>
+      <div>
+        <h3>Contacto</h3>
+        <ul>
+          <li><a class="js-wa" data-wa="footer" href="#" target="_blank" rel="noopener">+56 9 5610 0642</a></li>
+          <li><a href="tel:+56227383256">+56 2 2738 3256</a></li>
+          <li><a class="js-ig" href="#" target="_blank" rel="noopener">Instagram</a></li>
+          <li><a class="js-book" href="#" target="_blank" rel="noopener">AgendaPro</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Visítanos</h3>
+        <ul><li>Los Ingleses 186, Local 3</li><li>Chicureo, Colina</li><li>Región Metropolitana</li></ul>
+      </div>
+    </div>
+    <div class="footer__mark" aria-hidden="true"><span></span></div>
+    <div class="footer__bottom">
+      <span>© <span id="year"></span> Âme Beauty Lounge</span>
+      <button class="text-btn" type="button" id="toggleSamples">Ocultar etiquetas de ejemplo</button>
+    </div>
+  </div>
+</footer>
+
+<!-- Barra fija móvil -->
+<div class="mbar">
+  <a class="btn btn--accent js-book" href="#" target="_blank" rel="noopener">Reservar hora</a>
+  <a class="btn btn--wa js-wa" data-wa="barra" href="#" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.4.8 3.2.7.5-.1 1.5-.6 1.8-1.2.2-.6.2-1.1.1-1.2l-.5-.2z"/></svg></a>
+</div>
+<a class="fab-wa js-wa" data-wa="flotante" href="#" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.4.8 3.2.7.5-.1 1.5-.6 1.8-1.2.2-.6.2-1.1.1-1.2l-.5-.2z"/></svg></a>
+
+<!-- Reserva AgendaPro (ventana integrada) -->
+<div class="booking" id="booking" role="dialog" aria-modal="true" aria-labelledby="booking-title" hidden>
+  <div class="booking__panel">
+    <div class="booking__head">
+      <h2 id="booking-title">Reserva tu hora</h2>
+      <a class="booking__ext js-book-ext" href="#" target="_blank" rel="noopener">Abrir en AgendaPro ↗</a>
+      <button class="icon-btn" type="button" id="bookingClose" aria-label="Cerrar reserva">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+    <div class="booking__body">
+      <p class="booking__loading" aria-live="polite">Cargando agenda…</p>
+      <iframe id="bookingFrame" title="Agenda de Âme Beauty Lounge en AgendaPro" loading="lazy" allow="payment"></iframe>
+    </div>
+  </div>
+</div>
+
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Foto ampliada">
+  <button class="icon-btn lb-close" type="button" aria-label="Cerrar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  <button class="icon-btn lb-prev" type="button" aria-label="Foto anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button>
+  <figure style="margin:0"><img id="lbImg" src="" alt=""><p id="lbCap"></p></figure>
+  <button class="icon-btn lb-next" type="button" aria-label="Foto siguiente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>

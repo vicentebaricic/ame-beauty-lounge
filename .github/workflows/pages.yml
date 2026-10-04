@@ -26,7 +26,7 @@ jobs:
       - name: Prepare site
         run: |
           mkdir -p _site
-          cp -r index.html src assets .nojekyll _site/
+          cp -r *.html assets .nojekyll _site/
       - uses: actions/upload-pages-artifact@v3
         with:
           path: _site

@@ -1,0 +1,50 @@
+<!-- =================== HEADER =================== -->
+<header class="header" id="header">
+  <div class="header__inner">
+    <a class="brand" href="{{home}}" aria-label="Âme Beauty Lounge, ir al inicio"><span class="logo" role="img" aria-label="Âme Beauty Lounge"></span></a>
+    <nav class="nav" aria-label="Principal">
+      <ul>
+        <li><a href="servicios.html" data-nav="servicios">Servicios</a></li>
+        <li><a href="{{home}}#trabajos" data-nav="trabajos">Trabajos</a></li>
+        <li><a href="{{home}}#salon" data-nav="salon">El salón</a></li>
+        <li><a href="{{home}}#equipo" data-nav="equipo">Equipo</a></li>
+        <li><a href="{{home}}#visitanos" data-nav="visitanos">Visítanos</a></li>
+      </ul>
+    </nav>
+    <div class="header__actions">
+      <button class="icon-btn" type="button" id="themeBtn" aria-label="Cambiar a modo oscuro">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      </button>
+      <a class="icon-btn js-ig" href="#" target="_blank" rel="noopener" aria-label="Instagram de Âme Beauty Lounge">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+      </a>
+      <a class="btn btn-book js-book" href="#" target="_blank" rel="noopener">Reservar hora</a>
+      <button class="icon-btn menu-btn" type="button" id="menuBtn" aria-label="Abrir menú" aria-controls="mnav" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 8h16M4 16h16"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Menú móvil -->
+<div class="mnav" id="mnav" role="dialog" aria-modal="true" aria-label="Menú">
+  <div class="mnav__top">
+    <span class="brand"><span class="logo" role="img" aria-label="Âme Beauty Lounge"></span></span>
+    <button class="icon-btn" type="button" id="menuClose" aria-label="Cerrar menú">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+  </div>
+  <ul>
+    <li><a href="{{home}}" data-nav="inicio">Inicio</a></li>
+    <li><a href="servicios.html" data-nav="servicios">Servicios</a></li>
+    <li><a href="{{home}}#trabajos" data-nav="trabajos">Trabajos</a></li>
+    <li><a href="{{home}}#salon" data-nav="salon">El salón</a></li>
+    <li><a href="{{home}}#equipo" data-nav="equipo">Equipo</a></li>
+    <li><a href="{{home}}#visitanos" data-nav="visitanos">Horarios y ubicación</a></li>
+  </ul>
+  <div class="mnav__foot">
+    <a class="btn btn--accent js-book" href="#" target="_blank" rel="noopener">Reservar hora</a>
+    <a class="btn btn--ghost js-wa" data-wa="menu" href="#" target="_blank" rel="noopener">Escríbenos por WhatsApp</a>
+    <button class="text-btn" type="button" id="themeBtnM" style="justify-self:center;padding:var(--sp-3)">Cambiar modo claro / oscuro</button>
+  </div>
+</div>
